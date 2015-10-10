@@ -1,0 +1,218 @@
+<html lang="en">
+
+<head>
+    <% include ./partials/head %>
+        <% include ./partials/header %>
+            <h2>Register Form</h2>
+            <% if(typeof(errorMessage) !== 'undefined') {%>
+                <span>
+                    <%= errorMessage %>
+                </span>
+                <% } %>
+
+                    <article class="panel-group" id="accordion">
+                        <h1>User maintenance</h1>
+                        <section class="panel panel-default">
+                            <header class="panel-heading">
+                                <h2 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Search</a>
+                                </h2>
+                            </header>
+                            <div id="collapseOne" class="panel-collapse collapse">
+                                <div class="panel-body row">
+                                    <div class="col-xs-12 col-sm-6 col-md-3">
+                                        <select id="search-by" name="search-by" id="">
+                                            <option value="firstname">First name</option>
+                                            <option value="lastname">Last name</option>
+                                            <option value="role">Role</option>
+                                            <option value="organisation">Organisation</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-3">
+                                        <input type="text" id="search-for" placeholder=" search for...">
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-3">
+                                        <input type="button" class="search-button" data-search="user-maintenance" value="Search">
+                                    </div>
+                                    <div class="col-xs-12 response-links">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <form method="post" action="/user-maintenance">
+                            <section class="panel panel-default">
+                                <header class="panel-heading">
+                                    <h2 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">User details</a>
+                                    </h2>
+                                </header>
+                                <div id="collapseTwo" class="panel-collapse collapse in">
+                                    <div class="panel-body row">
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="userId">User id</label>
+                                            <input type="text" name="userId" id="userId" placeholder="auto" readonly />
+
+                                            <label for="username">username</label>
+                                            <input type="text" name="username" id="username" placeholder="auto" readonly />
+
+                                            <label for="password">password</label>
+                                            <input type="password" name="password" id="password" placeholder="password" />
+
+                                            <label for="firstname">First name</label>
+                                            <input type="text" name="firstname" id="firstname" placeholder="First name" required />
+
+                                            <label for="lastname">Last name</label>
+                                            <input type="text" name="lastname" id="lastname" placeholder="Last name" required/>
+
+                                            <label for="role">Role</label>
+                                            <input type="text" name="role" id="role" placeholder="Role" required/>
+
+                                            <label for="organisation">Organisation</label>
+                                            <input type="text" name="organisation" id="organisation" placeholder="" required/>
+
+                                            <label for="address-1">Address line 1</label>
+                                            <input type="text" name="address1" id="address1" placeholder="Address line 1" required/>
+
+                                            <label for="address-2">Address line 2</label>
+                                            <input type="text" name="address2" id="address2" placeholder="Address line 2" />
+
+                                            <label for="town">Town</label>
+                                            <input type="text" name="town" id="town" placeholder="" required/>
+
+                                            <label for="county">County</label>
+                                            <input type="text" name="county" id="county" placeholder="County" />
+
+                                            <label for="postcode">Postcode</label>
+                                            <input type="text" name="postcode" id="postcode" placeholder="Postcode" />
+
+                                            <label for="phone">Phone number</label>
+                                            <input type="text" name="phone" id="phone" placeholder="Phone number" />
+
+                                            <label for="phone-alt">Alternative phone number</label>
+                                            <input type="text" name="phonealt" id="phonealt" placeholder="Alt phone number" />
+
+
+                                            <label for="email">Email</label>
+                                            <input type="text" name="email">
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <label for="days-of-work">Days of work</label>
+                                        </div>
+                                        <div class="col-xs-2 work-days-column">
+                                            <label>Monday</label>
+                                            <input type="checkbox" name="monday" value="false">
+                                        </div>
+                                        <div class="col-xs-2 work-days-column">
+                                            <label>Tuesday</label>
+                                            <input type="checkbox" name="tuesday" value="false">
+                                        </div>
+                                        <div class="col-xs-2 work-days-column">
+                                            <label>Wednesday</label>
+                                            <input type="checkbox" name="wednesday" value="false">
+                                        </div>
+                                        <div class="col-xs-2 work-days-column">
+                                            <label>Thursday</label>
+                                            <input type="checkbox" name="thursday" value="false">
+                                        </div>
+                                        <div class="col-xs-2 work-days-column">
+                                            <label>Friday</label>
+                                            <input type="checkbox" name="friday" value="false">
+                                        </div>
+                                        <div class="col-xs-2 work-days-column">
+                                            <label>Saturday</label>
+                                            <input type="checkbox" name="saturday" value="false">
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="panel panel-default">
+                                <header class="panel-heading">
+                                    <h2 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">User privileges</a>
+                                    </h2>
+                                </header>
+                                <div id="collapseThree" class="panel-collapse collapse">
+                                    <div class="panel-body row">
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label id="" for="accesslevel">Access level</label>
+                                            <select name="accesslevel" id="">
+                                                <option value="none">None</option>
+                                                <option value="read-only">Read only</option>
+                                                <option value="super-user">Super user</option>
+                                                <option value="admin">Admin</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <label>Allowed pages</label>
+                                        </div>
+                                        <div class="col-xs-2 user-allowed-pages">
+                                            <label>Case details</label>
+                                            <input type="checkbox" name="accesscases" value="false">
+                                        </div>
+                                        <div class="col-xs-2 user-allowed-pages">
+                                            <label>Contact log</label>
+                                            <input type="checkbox" name="contactlog" value="false">
+                                        </div>
+                                        <div class="col-xs-2 user-allowed-pages">
+                                            <label>Case worker action log</label>
+                                            <input type="checkbox" name="accessactionlog" value="false">
+                                        </div>
+                                        <div class="col-xs-2 user-allowed-pages">
+                                            <label>Outreach log</label>
+                                            <input type="checkbox" name="accessoutreachlog" value="false">
+                                        </div>
+                                        <div class="col-xs-2 user-allowed-pages">
+                                            <label>Interventions log</label>
+                                            <input type="checkbox" name="accessinterventionslog" value="false">
+                                        </div>
+                                        <div class="col-xs-2 user-allowed-pages">
+                                            <label>Satisfaction survey</label>
+                                            <input type="checkbox" name="accesssatisfactionsurvey" value="false">
+                                        </div>
+                                        <div class="col-xs-2 user-allowed-pages">
+                                            <label>User maintenance</label>
+                                            <input type="checkbox" name="accessusermaintenance" value="false">
+                                        </div>
+                                        <div class="col-xs-2 user-allowed-pages">
+                                            <label>Partners log</label>
+                                            <input type="checkbox" name="accesspartnerslog" value="false">
+                                        </div>
+                                        <div class="col-xs-2 user-allowed-pages">
+                                            <label>Reports</label>
+                                            <input type="checkbox" name="accessreports" value="false">
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="panel panel-default">
+                                <header class="panel-heading">
+                                    <h2 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Additional info</a>
+                                    </h2>
+                                </header>
+                                <div id="collapseFour" class="panel-collapse collapse">
+                                    <div class="panel-body row">
+                                        <div class="col-xs-12 col-md-3 ">
+                                            <label>Current employee</label>
+                                            <select name="currentemployee" id="">
+                                                <option value="y">Yes</option>
+                                                <option value="n">No</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-12 col-md-9 ">
+                                            <label>Notes</label>
+                                            <textarea name="notes" rows="8" cols="100"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </section>
+                            <input type="submit" name="signup" id="signup" value="Save" />
+                            <input type="button" class="delete-button" name="delete" data-delete="user-maintenance" id="delete" value="Delete" />
+                        </form>
+                    </article>
+
+
+
+                    <% include ./partials/footer %>

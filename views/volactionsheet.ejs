@@ -1,0 +1,121 @@
+<article>
+    <!-- modal -->
+    <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="mymodallabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Modal title</h4>
+
+                </div>
+                <div class="modal-body">
+                    <article class="panel-group" id="accordion">
+                        <section class="panel panel-default">
+                            <header class="panel-heading">
+                            </header>
+                            <div class="panel-collapse collapse in">
+                                <div class="panel-body add-row-functionality new-entry hidden row">
+                                    <form action="/cases/volactionlog" method="post">
+                                        <input name="logtable" class="hidden" value="cwactionsheet">
+                                        <input name="volactionid" class="hidden" value="">
+                                        <input name="caseid" class="hidden" value="">
+                                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                            <label for="actiondate">Date</label>
+                                            <input type="date" name="actiondate"></input>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                            <label for="issue">Issue</label>
+                                            <textarea name="issue" id="issue" cols="30" rows="10"></textarea>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                            <label for="risk">Risk</label>
+                                            <textarea name="risk" id="risk" cols="30" rows="10"></textarea>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                            <label for="goal">Goal</label>
+                                            <textarea name="goal" id="goal" cols="30" rows="10"></textarea>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                            <label for="victimsstate">Victim's state</label>
+                                            <textarea name="victimsstate" id="victimsstate" cols="30" rows="10"></textarea>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                            <label for="actiontype">Action type</label>
+                                            <textarea name="actiontype" id="actiontype" cols="30" rows="10"></textarea>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                            <label for="action">Action</label>
+                                            <textarea name="action" id="action" cols="30" rows="10"></textarea>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                            <label for="completeddate">Completed date</label>
+                                            <input type="date" name="completeddate" id="completeddate">
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                            <label for="outcome">Outcome</label>
+                                            <textarea name="outcome" id="outcome" cols="30" rows="10"></textarea>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                            <label for="victimsstatevv">Victim's state after VV</label>
+                                            <textarea name="victimsstatevv" id="victimsstatevv" cols="30" rows="10"></textarea>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                            <label for="review">Review</label>
+                                            <textarea name="review" id="review" cols="30" rows="10" readonly></textarea>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                            <label for="threemonths">Review</label>
+                                            <textarea name="threemonths" id="threemonths" cols="30" rows="10"></textarea>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                            <label for="sixmonths">Review</label>
+                                            <textarea name="sixmonths" id="sixmonths" cols="30" rows="10"></textarea>
+                                        </div>
+                                        <input type="button" class="edit-row-button" value="edit">
+                                        <input type="button" class="delete-row-button hidden" value="delete">
+                                        <input type="submit" class="save-row-button hidden" value="save">
+
+                                    </form>
+                                </div>
+                            </div>
+                            <input type="button" class="add-row-button" value="add row">
+                            <script>
+                                $('.add-row-button').click(function() {
+                                    var container = $(this).siblings('.panel-collapse');
+                                    container.children('.new-entry').removeClass('hidden');
+                                    // if (container.children('.new-entry').length > 0) {} else {
+                                    //     container.children('.add-row-functionality').last().clone().appendTo(container);
+                                    //     container.children('.add-row-functionality').last().addClass('new-entry');
+                                    //     container.children('.new-entry').find('.edit-row-button').toggleClass('hidden');
+                                    container.children('.new-entry').find('.save-row-button').toggleClass('hidden');
+                                    // }
+                                });
+                                $('body').on('click', '.edit-row-button', function() {
+                                    // make row editable
+                                    $(this).siblings().find('input, textarea, select, checkbox').prop('readonly', false);
+                                    $(this).siblings('.delete-row-button').toggleClass('hidden')
+                                    $(this).siblings('.save-row-button').toggleClass('hidden')
+                                    $(this).toggleClass('hidden')
+
+                                });
+
+                                // cancel button which refreshes the page without making changes
+                            </script>
+
+                        </section>
+
+                    </article>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+</article>

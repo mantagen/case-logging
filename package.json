@@ -1,0 +1,32 @@
+{
+  "name": "case-logging",
+  "version": "1.0.0",
+  "description": "Case logging system",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "*",
+    "body-parser": "*",
+    "bookshelf": "^0.8",
+    "cookie-parser": "*",
+    "ejs": "*",
+    "express": "4.x",
+    "express-session": "*",
+    "knex": "^0.8.6",
+    "passport": "*",
+    "passport-local": "*",
+    "pg": "^4.4.2"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mantagen/case-logging.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mantagen/case-logging/issues"
+  },
+  "homepage": "https://github.com/mantagen/case-logging#readme"
+}

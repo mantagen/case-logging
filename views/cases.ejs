@@ -1,0 +1,1135 @@
+<html lang="en">
+
+<head>
+    <% include ./partials/head %>
+        <% include ./partials/header %>
+            <% if(typeof(errormessage) !== 'undefined') {%>
+                <span>
+                    <%= errormessage %>
+                </span>
+                <% } %>
+
+                    <article class="panel-group" id="accordion">
+                        <h1>Case entry details</h1>
+                        <section class="panel panel-default">
+                            <header class="panel-heading">
+                                <h2 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseone">Search</a>
+                                </h2>
+                            </header>
+                            <div id="collapseone" class="panel-collapse collapse in">
+                                <div class="panel-body row">
+                                    <div class="col-xs-12 col-sm-6 col-md-3">
+                                        <select name="search-by" id="search-by">
+                                            <option value="log-no">Log number</option>
+                                            <option value="lastname">Last name</option>
+                                            <option value="referrer-org">Referring organisation</option>
+                                            <option value="referring-person">Name of person referring</option>
+                                            <option value="dob">Date of birth</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-3">
+                                        <input type="text" id="search-for" placeholder=" search for...">
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-3">
+                                        <input type="button" class="search-button" data-search="cases" value="search">
+                                    </div>
+                                    <div class="col-xs-12 response-links">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <form method="post" action="/cases">
+                            <section class="panel panel-default">
+                                <header class="panel-heading">
+                                    <h2 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapsetwo">Basic details</a>
+                                    </h2>
+                                </header>
+                                <div id="collapsetwo" class="panel-collapse collapse">
+                                    <div class="panel-body row">
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <span>Log number</span>
+                                            <input id="log-number" type="number" name="lognumber" value="" required>
+                                            <input id="case-id" name="caseid" class="hidden">
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="log-type">Log type</label>
+                                            <select name="logtype" id="log-type" required>
+                                                <option value="referral">Referral</option>
+                                                <option value="case">Case</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <span>Referral date</span>
+                                            <input type="date" name="referraldate" required>
+
+                                            <label for="report-by">Report taken by</label>
+
+                                            <select name="reporttakenby" id="report-by" data-list='users' required>
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+
+                                            <label for="assignedto">Case assigned to</label>
+                                            <select name="assignedto" id="assigned-to" data-list="caseworkers">
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+
+                                            <span>Date assigned</span>
+                                            <input type="date" name="assigneddate" readonly>
+                                        </div>
+                                        <!-- referral info -->
+
+                                        <div class="col-xs-12">
+                                            <h3>General referral info</h3>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="referral-type">Referral type</label>
+                                            <select name="referraltype" id="referral-type" data-list="referral">
+                                            </select>
+                                            <label for="reforganisation">Referrer organisation</label>
+                                            <input type="text" name="reforganisation">
+                                            <label for="reffirstname">First name</label>
+                                            <input type="text" name="reffirstname">
+                                            <label for="referrer-lastname">Last name</label>
+                                            <input type="text" name="reflastname">
+                                            <label for="referrer-role">Role</label>
+                                            <input type="text" name="refrole">
+                                            <label for="victim-aware">Does the victim know you are making the report?</label>
+                                            <select name="refvictimaware" id="victim-aware">
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="refadd1">Address line 1</label>
+                                            <input type="text" name="refadd1">
+                                            <label for="referrer-add2">Address line 2 </label>
+                                            <input type="text" name="refadd2">
+                                            <label for="referrer-town">Town </label>
+                                            <input type="text" name="reftown" data-list='towns'>
+                                            <label for="referrer-post-code">Postcode </label>
+                                            <input type="text" name="refpostcode">
+                                            <label for="referrer-tel">Tel no.</label>
+                                            <input type="text" name="reftel">
+                                            <label for="referrer-mobile"> Mobile no.</label>
+                                            <input type="text" name="refmob">
+                                            <label for="referrer-email"> Email address</label>
+                                            <input type="text" name="refemail">
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="referrer-best-time">Preferred time of contact? </label>
+                                            <input type="text" name="refbesttime">
+                                            <label for="referrer-preferred-contact">Preferred type of contact?</label>
+                                            <select name="refpreferredcontact" id="">
+                                                <option value="phone">Phone</option>
+                                                <option value="email">Email</option>
+                                            </select>
+                                            <label for="refreferrer">How did the referrer hear about us?</label>
+                                            <input type="text" name="refreferrer">
+                                            <label for="referrer-feedback">Does the referrer want feedback?</label>
+                                            <select name="reffeedback" id="">
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+
+                                            <label for="referrer-permission">Does the referrer have permission?</label>
+                                            <select name="refpermmision" id="">
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="referrer-other">Other info</label>
+                                            <textarea name="refotherinfo" id=""></textarea>
+                                            <div>
+                                                <div class="add-multiple max-5" data-curr="1" data-prefix="flags">
+                                                    <label id="flags" for="flags">Flags</label>
+                                                    <select name="flags" id="" data-list='flags'>
+                                                    </select>
+                                                </div>
+                                                <input type="button" class='add-multiple-button' value='Add'>
+                                                <input type="button" class="add-multiple-button-remove" value='remove'>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- victim info -->
+                            <section class="panel panel-default">
+                                <header class="panel-heading">
+                                    <h2 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapsethree">Victim details</a>
+                                    </h2>
+                                </header>
+                                <div id="collapsethree" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="victim-firstname">First name</label>
+                                            <input type="text" name="vicfirstname" required>
+                                            <label for="victim-lastname">Last name</label>
+                                            <input type="text" name="viclastname" required>
+                                            <label for="victim-title">Title</label>
+                                            <select name="victitle" data-list='title'></select>
+
+                                            <label for="victim-dob">Date of birth</label>
+                                            <input type="date" name="vicdob">
+
+                                            <label for="victim-gender">Gender</label>
+                                            <select name="vicgender" id="victim-gender" dat-list='gender' required>
+                                            </select>
+
+                                            <label for="victim-ethnicity">Ethnicity</label>
+                                            <select name="vicethic" id="" data-list='ethnic' required>
+                                            </select>
+                                            <label for="victim-nationality">Nationality</label>
+                                            <select name="vicnationality" id="" data-list='nationality' required>
+                                            </select>
+                                            <label for="victim-sexuality">Sexuality</label>
+                                            <select name="vicsexuality" id="" data-list='sexuality'>
+                                            </select>
+                                            <label for="victim-rorb">Religion or belief</label>
+                                            <select name="vicrorb" id="" data-list='religion'>
+                                            </select>
+                                            <label for="victim-gender-id">Gender ID</label>
+                                            <select name="vicgenderid" id="" data-list='religion'>
+                                            </select>
+
+                                            <label for="victim-age">Age (auto)</label>
+                                            <input type="number" name="vicage">
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+
+                                            <label for="victim-add1">Address line 1</label>
+                                            <input type="text" name="vicadd1">
+                                            <label for="victim-add2">Address line 2 </label>
+                                            <input type="text" name="vicadd2">
+                                            <label for="victim-town">Town </label>
+                                            <select type="text" name="victown" data-list='towns' required></select>
+                                            <label for="victim-post-code">Postcode </label>
+                                            <input type="text" name="vicpostcode">
+                                            <label for="victim-tenure">Tenure</label>
+                                            <select name="victenure" id="" data-list='tenure'>
+                                            </select>
+
+                                            <label for="victel">Tel no.</label>
+                                            <input type="text" name="victel" required>
+                                            <label for="victim-mobile"> Alt no.</label>
+                                            <input type="text" name="vicmob">
+                                            <label for="victim-email"> Email address</label>
+                                            <input type="text" name="vicemail">
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="victim-best-time">Preferred time of contact? </label>
+                                            <input type="text" name="vicbesttime">
+                                            <label for="victim-preferred-contact">Preferred type of contact?</label>
+                                            <select name="vicpreferredcontact" id="" data-list='prefer'>
+                                            </select>
+                                            <label for="victim-pets">Pets?</label>
+                                            <select name="vicpets" id="">
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                            <label for="victim-ward">Ward (?)</label>
+                                            <input type="text" name="vicward">
+                                            <label for="victim-disabilities">Disabilities?</label>
+                                            <input type="text" name="vicdisabilities">
+                                            <label for="vicotherinfo">Other info</label>
+                                            <textarea type="text" name="vicotherinfo"></textarea>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <h3>Others who live with victim</h3>
+                                        </div>
+                                        <div class="col-xs-12 col-md-6">
+                                            <div class=" row add-multiple max-5" data-curr='1' data-prefix="cohab">
+                                                <h4>Cohabitor</h4>
+                                                <label for="cohabtitle">Title</label>
+                                                <select type="text" name="cohabtitle" data-list='title'></select>
+                                                <label for="cohabfirstname">First name</label>
+                                                <input type="text" name="cohabfirstname">
+                                                <label for="cohablastname">Last name</label>
+                                                <input type="text" name="cohablastname">
+                                                <label for="cohabdob">Date of birth</label>
+                                                <input type="date" name="cohabdob">
+                                                <label for="cohabrelationship">Relationship</label>
+                                                <input type="text" name="cohabrelationship">
+                                            </div>
+
+                                            <input type="button" class='add-multiple-button' value='Add'>
+                                            <input type="button" class="add-multiple-button-remove" value='remove'>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <h3>Does the victim have other support? (dynamic ad rows)</h3>
+                                        </div>
+                                        <div>
+                                            <div class="row add-multiple max-3" data-curr='1' data-prefix="othersupport">
+                                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                                    <h4>Other support</h4>
+                                                    <label for="othersupport-permission">Permission to conact?</label>
+                                                    <select name="othersupportpermission" id="">
+                                                        <option value="1">Yes</option>
+                                                        <option value="0">No</option>
+                                                    </select>
+
+                                                    <label for="othersupportoganisation">Organisation name</label>
+                                                    <input type="text" name="othersupportorganisation">
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                                    <label for="othersupporttitle">Title</label>
+                                                    <select type="text" name="othersupporttitle" data-list='title'></select>
+                                                    <label for="othersupportfirstname">First name</label>
+                                                    <input type="text" name="othersupportfirstname">
+                                                    <label for="othersupportlastname">Last name</label>
+                                                    <input type="text" name="othersupportlastname">
+                                                    <label for="othersupportadd1">Address line 1</label>
+                                                    <input type="text" name="othersupportadd1">
+                                                    <label for="othersupportadd2">Address line 2 </label>
+                                                    <input type="text" name="othersupportadd2">
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                                    <label for="othersupporttown">Town </label>
+                                                    <select type="text" name="othersupporttown" data-list='towns'></select>
+                                                    <label for="othersupportpost-code">Postcode </label>
+                                                    <input type="text" name="othersupportpost-code">
+                                                    <label for="othersupporttel">Tel no.</label>
+                                                    <input type="text" name="othersupporttel">
+                                                    <label for="othersupportmobile"> Mobile no.</label>
+                                                    <input type="text" name="othersupportmob">
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                                    <label for="othersupportemail"> Email address</label>
+                                                    <input type="text" name="othersupportemail">
+                                                    <label for="othersupportbest-time">Preferred time of contact? </label>
+                                                    <input type="text" name="othersupportbesttime">
+                                                    <label for="othersupportpreferred-contact">Preferred type of contact?</label>
+                                                    <select name="othersupportpreferredcontact" id="">
+                                                        <option value="phone">Phone</option>
+                                                        <option value="email">Email</option>
+                                                    </select>
+                                                    <label for="othersupportrelationship">Relationship </label>
+                                                    <input type="text" name="othersupportrelationship">
+                                                </div>
+                                            </div>
+                                            <input type="button" class='add-multiple-button' value='Add'>
+                                            <input type="button" class="add-multiple-button-remove" value='remove'>
+                                        </div>
+                                    </div>
+                            </section>
+                            <section class="panel panel-default">
+                                <header class="panel-heading">
+                                    <h2 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapsefour">Incident details</a>
+                                    </h2>
+                                </header>
+                                <div id="collapsefour" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-6 col-md-3">
+                                                <label for="incidentporeported">Has it been reported to the police?</label>
+                                                <select name="incidentporeported" id="" required="">
+                                                    <option value="1">Yes</option>
+                                                    <option value="0">No</option>
+                                                </select>
+                                                <label for="incidentpowanted">Do they want police involvement?</label>
+                                                <select name="incidentpowanted" id="">
+                                                    <option value="1">Yes</option>
+                                                    <option value="0">No</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 col-md-3">
+                                                <label for="incidentpolog">Police log number</label>
+                                                <input type="text" name="incidentpolog">
+                                                <label for="police-date">Date of police report</label>
+                                                <input type="date" name="indentpodate">
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 col-md-3">
+                                                <label for="police-name">Name of officer</label>
+                                                <input type="text" name="incidentponame">
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 col-md-3">
+                                                <label for="police-badge">Badge number</label>
+                                                <input type="text" name="incidentpobadge">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="incidentdate">Date of incident</label>
+                                            <input type="date">
+                                            <label for="incidenttime">Time of incident</label>
+                                            <input type="time">
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="incidenttown">Town where incident occurred</label>
+                                            <select name="incidenttown" id="" data-list='towns'>
+                                            </select>
+
+                                            <label for="incidenttype">Type of hate crime</label>
+                                            <select name="incidenttype" id="" required>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="incidentspace">Location space</label>
+                                            <select name="incidentspace" id="">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                            </select>
+                                            <label for="incidentform">Form of incident</label>
+                                            <select name="incidentform" id="">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                            </select>
+
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="incidentaddress">Address where incident took place</label>
+                                            <input type="text" name="incidentadd1">
+                                            <input type="text" name="incidentadd2">
+                                            <input type="text" name="incidentpostcode" placeholder="postcode">
+                                            <label for="incidenthowaffected">How has the incident affected the victim?</label>
+                                            <input type="text" name="incidenthowaffected">
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <h3>If the incident took place on public transport</h3>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="">Did it take place on public transport?</label>
+                                            <select name="incidenttrans" id="">
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                            <label for="trans-town">Town of public transport</label>
+                                            <select name="incidenttranstown" id="" data-list='towns'>
+                                            </select>
+                                            <label for="trans-type">Type of public transport</label>
+                                            <select name="incidenttranstype" id="" data-list='transport'>
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+
+                                            <label for="trans-service">Number of service</label>
+                                            <input type="text" name="incidenttransservicenumber">
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="trans-from">Travelling from</label>
+                                            <input type="text" name="incidenttransfrom">
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="trans-to">Travelling to</label>
+                                            <input type="text" name="incidenttransto">
+                                        </div>
+                                        <div class="col-xs-12">
+
+                                            <h3>Incident details</h3>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="incidentdescription">Description of incident</label>
+                                            <textarea name="incidentdesc" rows="8" cols="100"></textarea>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="incidentinjured">Was anyone injured?</label>
+                                            <select name="incidentinjury" id="">
+                                                <option value="true">Yes</option>
+                                                <option value="false">No</option>
+                                            </select>
+
+                                            <label for="incidentinjury-details">Injury details</label>
+                                            <textarea name="incidentinjurydetails" rows="8" cols="100"></textarea>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="incidentproperty">Damage/loss of propery</label>
+                                            <select name="incidentproperty" id="">
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                            <textarea name="incidentpropertydetail" rows="8" cols="100"></textarea>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="incidentwitnesses">Any witnesses?</label>
+                                            <select name="incidentwitness" id="">
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+
+                                            <label for="incidentwitness-details"></label>
+                                            <textarea name="incidentwitnessdetail" rows="8" cols="100"></textarea>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="cctv-coverage">CCTV coverage?</label>
+                                            <select name="incidentcctv" id="">
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+
+                                            <label for="cctv-coverage-details">CCTV coverage details</label>
+                                            <textarea name="incidentcctvdetail" rows="8" cols="100"></textarea>
+                                        </div>
+                            </section>
+                            <section class="panel panel-default">
+                                <header class="panel-heading">
+                                    <h2 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapsefive">Offender details (ability to add rows)</a>
+                                    </h2>
+                                </header>
+                                <div id="collapsefive" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="col-xs-12">
+                                            <h2>Offenders</h2>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="offenderno">How many were there?</label>
+                                            <input type="integer" name="offenderno">
+                                        </div>
+                                        <div>
+                                            <div class="row add-multiple max-5" data-curr='1' data-prefix="offender">
+                                                <h4>Offender</h4>
+                                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                                    <label for="offenderknown">Did the victim know them?</label>
+                                                    <select name="offenderknown" id="">
+                                                        <option value="1">Yes</option>
+                                                        <option value="0">No</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6">
+                                                    <label for="offenderinflu">Did they think they were under the influence of:</label>
+                                                    <select name="offenderinflu" id="" data-list='influences'>
+                                                    </select>
+
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                                    <label for="offenderfirstname">First name</label>
+                                                    <input type="text" name="offenderfirstname">
+                                                    <label for="offenderlastname">Last name</label>
+                                                    <input type="text" name="offenderlastname">
+                                                    <label for="offendertitle">Title</label>
+                                                    <select name="offendertitle" data-list='title'>
+                                                    </select>
+
+                                                    <label for="offenderage">Age (auto)</label>
+                                                    <input type="number" name="offenderage">
+
+
+                                                    <label for="offendergender">Gender</label>
+                                                    <select name="offendergender" id="offendergender" data-list='gender'>
+                                                    </select>
+
+                                                    <label for="offenderethnicity">Ethnicity</label>
+                                                    <select name="offenderethnic" id="" data-list='ethnic'>
+                                                    </select>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                                    <label for="offenderadd1">Address line 1</label>
+                                                    <input type="text" name="offenderadd1">
+                                                    <label for="offenderadd2">Address line 2 </label>
+                                                    <input type="text" name="offenderadd2">
+                                                    <label for="offendertown">Town </label>
+                                                    <select type="text" name="offendertown" data-list='towns'></select>
+                                                    <label for="offenderpostcode">Postcode </label>
+                                                    <input type="text" name="offenderpostcode">
+
+                                                    <label for="offendertel">Tel no.</label>
+                                                    <input type="text" name="offendertel">
+                                                    <label for="offendermob"> Mobile no.</label>
+                                                    <input type="text" name="offendermob">
+                                                    <label for="offenderemail"> Email address</label>
+                                                    <input type="text" name="offenderemail">
+                                                </div>
+                                            </div>
+                                            <input type="button" class='add-multiple-button' value='Add'>
+                                            <input type="button" class="add-multiple-button-remove" value='remove'>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <label for="offenderdescription">Description of offender</label>
+                                            <textarea name="offenderdescription" rows="8" cols="100"></textarea>
+                                        </div>
+
+                                        <div class="col-xs-12">
+                                            <h3>Offender vehicle details (if applicable)</h3>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="offendervehicle-make">Vehicle make</label>
+                                            <input type="text" name="offendervehiclemake">
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="offendervehicle-model">Model</label>
+                                            <input type="text" name="offendervehiclemodel">
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="offendervehicle-colour">Colour</label>
+                                            <input type="text" name="offendervehiclecolour">
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="offendervehicle-reg">Registration number</label>
+                                            <input type="text" name="offendervehiclereg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="panel panel-default">
+                                <header class="panel-heading">
+                                    <h2 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapsesix">Other people involved/ additional information</a>
+                                    </h2>
+                                </header>
+                                <div id="collapsesix" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div>
+                                            <div class="row add-multiple max-5" data-curr='1' data-prefix="others">
+                                                <h4>Other involved</h4>
+                                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                                    <label for="othersfirstname">First name</label>
+                                                    <input type="text" name="othersfirstname">
+                                                    <label for="otherslastname">Last name</label>
+                                                    <input type="text" name="otherslastname">
+                                                    <label for="otherstitle">Title</label>
+                                                    <select name="otherstitle" data-list='title'>
+                                                    </select>
+                                                    <label for="othersdob">Date of birth</label>
+                                                    <input type="date" name="othersdob">
+                                                    <label for="othersage">Age</label>
+                                                    <input type="integer" name="othersage">
+
+                                                    <label for="othersgender">Gender</label>
+                                                    <select name="othersgender" id="othersgender" data-list='gender'>
+                                                    </select>
+
+                                                    <label for="othersethnicity">Ethnicity</label>
+                                                    <select name="othersethnic" id="" data-list='ethnic'>
+                                                    </select>
+                                                    <label for="othersnationality">Nationality</label>
+                                                    <select name="othersnationality" id="" data-list='nationality'>
+                                                    </select>
+                                                    <label for="otherssexuality">Sexuality</label>
+                                                    <select name="otherssexuality" id="" data-list='sexuality'>
+                                                    </select>
+                                                    <label for="othersrorb">Religion or belief</label>
+                                                    <select name="othersreligion" id="" data-list='religion'>
+                                                    </select>
+                                                    <label for="othersgender-id">Gender ID</label>
+                                                    <select name="otherstrans" id="" data-list='genderid'>
+                                                    </select>
+
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                                    <label for="othersadd1">Address line 1</label>
+                                                    <input type="text" name="othersadd1">
+                                                    <label for="othersadd2">Address line 2 </label>
+                                                    <input type="text" name="othersadd2">
+                                                    <label for="otherstown">Town </label>
+                                                    <select type="text" name="otherstown" data-list='towns'></select>
+                                                    <label for="otherspostcode">Postcode </label>
+                                                    <input type="text" name="otherspost-code">
+
+                                                    <label for="otherstel">Tel no.</label>
+                                                    <input type="text" name="otherstel">
+                                                    <label for="othersmobile"> Mobile no.</label>
+                                                    <input type="text" name="othersmob">
+                                                    <label for="othersemail"> Email address</label>
+                                                    <input type="text" name="othersemail">
+
+                                                    <label for="relationship">Relationship to victim</label>
+                                                    <input type="text" name="othersrelationship">
+                                                    <label for="school">Which school or college</label>
+                                                    <input type="text" name="othersschool">
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                                    <label for="organisation">Do this other person have an organisation working with them?</label>
+                                                    <select name="othersorg" id="">
+                                                        <option value="1">Yes</option>
+                                                        <option value="0">No</option>
+                                                    </select>
+
+                                                    <label for="organisation-name">Organisation name</label>
+                                                    <input type="text" name="othersorgname">
+
+                                                    <label for="othersorganisation-firstname">First name</label>
+                                                    <input type="text" name="othersorgfirstname">
+                                                    <label for="othersorganisation-lastname">Last name</label>
+                                                    <input type="text" name="othersorglastname">
+                                                    <label for="othersorganisation-role">Role</label>
+                                                    <input type="text" name="othersorgrole">
+
+                                                    <label for="othersorganisation-add1">Address line 1</label>
+                                                    <input type="text" name="othersorgadd1">
+                                                    <label for="othersorganisation-add2">Address line 2 </label>
+                                                    <input type="text" name="othersorgadd2">
+                                                    <label for="othersorganisation-town">Town </label>
+                                                    <select type="text" name="othersorgtown" data-list='towns'></select>
+                                                    <label for="othersorgpostcode">Postcode </label>
+                                                    <input type="text" name="othersorgpostcode">
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                                    <label for="othersorgtel">Tel no.</label>
+                                                    <input type="text" name="othersorgtel">
+                                                    <label for="othersorganisation-mobile"> Mobile no.</label>
+                                                    <input type="text" name="othersorgmob">
+                                                    <label for="othersorganisation-email"> Email address</label>
+                                                    <input type="text" name="othersorgemail">
+                                                    <label for="othersorgbesttime">Preferred time of contact? </label>
+                                                    <input type="text" name="othersorgbesttime">
+                                                    <label for="othersorganisation-preferred-contact">Preferred type of contact?</label>
+                                                    <select name="othersorgpreferredcontact" id="">
+                                                        <option value="phone">Phone</option>
+                                                        <option value="email">Email</option>
+                                                    </select>
+
+                                                    <label for="othersorganisation-feedback">Does the organisation want feedback?</label>
+                                                    <select name="othersorgfeedback" id="">
+                                                        <option value="1">Yes</option>
+                                                        <option value="0">No</option>
+                                                    </select>
+
+                                                    <label for="othersother-info"></label>
+                                                    <textarea name="othersorginfo" rows="8" cols="100"></textarea>
+
+                                                    <label for="othersorganisation-permission">Do we have permission to talk to the other organisation??</label>
+                                                    <select name="othersorgpermission" id="">
+                                                        <option value="1">Yes</option>
+                                                        <option value="0">No</option>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                            <input type="button" class='add-multiple-button' value='Add'>
+                                            <input type="button" class="add-multiple-button-remove" value='remove'>
+                                        </div>
+                                        <div class="col-xs-12">
+
+                                            <h3>Similar incidents in the past</h3>
+
+                                            <label for="general-similar-before">Has the victim experienced similar incidents before?</label>
+                                            <select name="generalsimilarbefore" id="">
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="general-similar-details"> Similar incident details</label>
+                                            <textarea name="generalsimilardetails" rows="8" cols="100"></textarea>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="general-desired-outcome">What outcome would victim like?</label>
+                                            <textarea name="generaldesiredoutcome" rows="8" cols="100"></textarea>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3">
+                                            <label for="general-support-needs">Support needs additional info</label>
+                                            <textarea name="generalsupportneeds" rows="8" cols="100"></textarea>
+
+                                        </div>
+                                    </div>
+                            </section>
+                            <section>
+                                <input type="submit" name="save" value="save">
+                                <input type="button" name="email-case-worker" value="email case worker">
+                                <input type="button" class="modal-log-button" data-toggle="modal" data-target="#mymodal" name="clientcontactlog" value="Client contact log">
+                                <input type="button" class="modal-log-button" data-toggle="modal" data-target="#mymodal" name="organisationcontactlog" value="Organisation contact log">
+                                <input type="button" class="modal-log-button" data-toggle="modal" data-target="#mymodal" name="cwactions" value="caseworker action log">
+                                <input type="button" class="modal-log-button" data-toggle="modal" data-target="#mymodal" name="outreachlog" value="outreach log">
+                                <input type="button" class="modal-log-button" data-toggle="modal" data-target="#mymodal" name="interventionslog" value="interventions log">
+                                <input type="button" class="modal-log-button" data-toggle="modal" data-target="#mymodal" name="satisfactionsurvey" value="satisfaction survey">
+                                <input type="button" class="modal-log-button" data-toggle="modal" data-target="#mymodal" name="volunteeractions" value="volunteer action log">
+                                </div>
+                                <section>
+                        </form>
+                    </article>
+                    <article>
+                        <!-- modal -->
+                        <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="mymodallabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title">Modal title</h4>
+
+                                    </div>
+                                    <div class="modal-body">
+                                        <article class="panel-group cwactions" id="accordion">
+                                            <section class="panel panel-default">
+                                                <header class="panel-heading">
+                                                </header>
+                                                <div class="panel-collapse collapse in">
+                                                    <div class="panel-body add-row-functionality new-entry hidden row">
+                                                        <form action="/cases/savecaselogs" method="post">
+                                                            <input name="logtable" class="hidden" value="cwactions">
+                                                            <input name="cwactionid" class="hidden" value="">
+                                                            <input name="caseid" class="hidden" value="">
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="actiondate">Date</label>
+                                                                <input type="date" name="actiondate"></input>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="caseworkername">Caseworker name</label>
+                                                                <select type="text" name="caseworkername" data-list='caseworkers'></select>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="issue">Issue</label>
+                                                                <textarea name="issue" id="issue" cols="30" rows="10"></textarea>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="risk">Risk</label>
+                                                                <textarea name="risk" id="risk" cols="30" rows="10"></textarea>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="goal">Goal</label>
+                                                                <textarea name="goal" id="goal" cols="30" rows="10"></textarea>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="victimsstate">Victim's state</label>
+                                                                <select name="victimsstate" id="victimsstate" data-list='victimbefore'></select>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="actiontype">Action type</label>
+                                                                <select name="actiontype" id="actiontype" data-list='contactorg'></select>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="action">Action</label>
+                                                                <textarea name="action" id="action" cols="30" rows="10"></textarea>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="completeddate">Completed date</label>
+                                                                <input type="date" name="completeddate" id="completeddate">
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="outcome">Outcome</label>
+                                                                <textarea name="outcome" id="outcome" cols="30" rows="10"></textarea>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="victimsstatevv">Victim's state after VV</label>
+                                                                <select name="victimsstatevv" id="victimsstatevv" data-list='victimafter'></select>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="review">Review</label>
+                                                                <textarea name="review" id="review" cols="30" rows="10" readonly></textarea>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="threemonths">Review</label>
+                                                                <textarea name="threemonths" id="threemonths" cols="30" rows="10"></textarea>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="sixmonths">Review</label>
+                                                                <textarea name="sixmonths" id="sixmonths" cols="30" rows="10"></textarea>
+                                                            </div>
+                                                            <input type="button" class="edit-row-button" value="edit">
+                                                            <input type="button" class="delete-row-button hidden" value="delete">
+                                                            <input type="submit" class="save-row-button hidden" value="save">
+
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <input type="button" class="add-row-button" value="add row">
+
+                                            </section>
+
+                                        </article>
+
+                                        <article class="panel-group volunteeractions" id="">
+                                            <section class="panel panel-default">
+                                                <header class="panel-heading">
+                                                </header>
+                                                <div class="panel-collapse collapse in">
+                                                    <div class="panel-body add-row-functionality new-entry hidden row">
+                                                        <form action="/cases/savecaselogs" method="post">
+                                                            <input name="logtable" class="hidden" value="volunteeractions">
+                                                            <input name="volactionid" class="hidden" value="">
+                                                            <input name="caseid" class="hidden" value="">
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="actiondate">Date</label>
+                                                                <input type="date" name="actiondate"></input>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="issue">Issue</label>
+                                                                <textarea name="issue" id="issue" cols="30" rows="10"></textarea>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="risk">Risk</label>
+                                                                <textarea name="risk" id="risk" cols="30" rows="10"></textarea>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="goal">Goal</label>
+                                                                <textarea name="goal" id="goal" cols="30" rows="10"></textarea>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="victimsstate">Victim's state</label>
+                                                                <select name="victimsstate" id="victimsstate" data-list='victimbefore'></select>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="actiontype">Action type</label>
+                                                                <select name="actiontype" id="actiontype" data-list='contactorg'></select>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="action">Action</label>
+                                                                <textarea name="action" id="action" cols="30" rows="10"></textarea>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="completeddate">Completed date</label>
+                                                                <input type="date" name="completeddate" id="completeddate">
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="outcome">Outcome</label>
+                                                                <textarea name="outcome" id="outcome" cols="30" rows="10"></textarea>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="victimsstatevv">Victim's state after VV</label>
+                                                                <select name="victimsstatevv" id="victimsstatevv" data-list='victimafter'></select>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="review">Review</label>
+                                                                <textarea name="review" id="review" cols="30" rows="10" readonly></textarea>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="threemonths">Review</label>
+                                                                <textarea name="threemonths" id="threemonths" cols="30" rows="10"></textarea>
+                                                            </div>
+                                                            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                                                <label for="sixmonths">Review</label>
+                                                                <textarea name="sixmonths" id="sixmonths" cols="30" rows="10"></textarea>
+                                                            </div>
+
+                                                            <input type="button" class="edit-row-button" value="edit">
+                                                            <input type="button" class="delete-row-button hidden" value="delete">
+                                                            <input type="submit" class="save-row-button hidden" value="save">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <input type="button" class="add-row-button" value="add row">
+                                            </section>
+                                        </article>
+                                        <article class="panel-group outreachlog" id="">
+                                            <section class="panel panel-default">
+                                                <header class="panel-heading">
+                                                </header>
+                                                <div class="panel-collapse collapse in">
+                                                    <div class="panel-body add-row-functionality new-entry hidden row">
+                                                        <form action="/cases/savecaselogs" method="post">
+                                                            <input name="logtable" class="hidden" value="outreachlog">
+                                                            <input name="outreachlogid" class="hidden" value=""> caseid
+                                                            <input type="text" name="caseid"> goal
+                                                            <input type="text" name="goal"> main_contact
+                                                            <input type="text" name="main_contact"> role
+                                                            <input type="text" name="role"> date
+                                                            <input type="text" name="date"> outreachtype
+                                                            <input type="text" name="outreachtype"> group
+                                                            <input type="text" name="group"> numparticipants
+                                                            <input type="text" name="numparticipants"> lengthtime
+                                                            <input type="text" name="lengthtime"> attdocuments
+                                                            <input type="text" name="attdocuments"> followup
+                                                            <input type="text" name="followup"> outcomes
+                                                            <input type="text" name="outcomes"> VV worker 1
+                                                            <select type="text" name="vvworker1" data-list='users'> </select>
+                                                            VV worker 2
+                                                            <select type="text" name="vvworker2" data-list='users'> </select>
+                                                            VV worker 3
+                                                            <select type="text" name="vvworker3" data-list='users'>
+                                                            </select>
+                                                            VV worker 4
+                                                            <select type="text" name="vvworker4" data-list='users'> </select>
+                                                            VV worker 5
+                                                            <select type="text" name="vvworker5" data-list='users'>
+                                                            </select>
+
+                                                            <input type="button" class="edit-row-button" value="edit">
+                                                            <input type="button" class="delete-row-button hidden" value="delete">
+                                                            <input type="submit" class="save-row-button hidden" value="save">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <input type="button" class="add-row-button" value="add row">
+                                            </section>
+                                        </article>
+                                        <article class="panel-group organisationcontactlog" id="">
+                                            <section class="panel panel-default">
+                                                <header class="panel-heading">
+                                                </header>
+                                                <div class="panel-collapse collapse in">
+                                                    <div class="panel-body add-row-functionality new-entry hidden row">
+                                                        <form action="/cases/savecaselogs" method="post">
+                                                            <input name="logtable" class="hidden" value="orgcontactlog"> caseid
+                                                            <input type="text" name="caseid"> organisationcontactid
+                                                            <input type="text" name="organisationcontactid"> contactname
+                                                            <input type="text" name="contactname"> organisationname
+                                                            <input type="text" name="organisationname"> area
+                                                            <select type="text" name="area" data-list="towns"></select>
+                                                            role
+                                                            <input type="text" name="role"> contacttype
+                                                            <select type="text" name="contacttype" data-list="contact"></select>
+                                                            contactreason
+                                                            <select type="text" name="contactreason" data-list='reason'></select>
+                                                            attdocuments
+                                                            <input type="text" name="attdocuments"> vvworker
+                                                            <select type="text" name="vvworker" data-list='users'></select>
+                                                            agreedcontacttime
+                                                            <input type="text" name="agreedcontacttime"> contactdetails
+                                                            <input type="text" name="contactdetails">
+
+                                                            <input type="button" class="edit-row-button" value="edit">
+                                                            <input type="button" class="delete-row-button hidden" value="delete">
+                                                            <input type="submit" class="save-row-button hidden" value="save">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <input type="button" class="add-row-button" value="add row">
+                                        </article>
+                                        <article class="panel-group satisfactionsurvey" id="">
+                                            <section class="panel panel-default">
+                                                <header class="panel-heading">
+                                                </header>
+                                                <div class="panel-collapse collapse in">
+                                                    <div class="panel-body add-row-functionality new-entry hidden row">
+                                                        <form action="/cases/savecaselogs" method="post">
+                                                            <input type="button" class="edit-row-button" value="edit">
+                                                            <input type="button" class="delete-row-button hidden" value="delete">
+                                                            <input type="submit" class="save-row-button hidden" value="save">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <input type="button" class="add-row-button" value="add row">
+                                            </section>
+                                        </article>
+                                        <article class="panel-group interventionslog" id="">
+                                            <section class="panel panel-default">
+                                                <header class="panel-heading">
+                                                </header>
+                                                <div class="panel-collapse collapse in">
+                                                    <div class="panel-body add-row-functionality new-entry hidden row">
+                                                        <form action="/cases/savecaselogs" method="post">
+                                                            <input type="button" class="edit-row-button" value="edit">
+                                                            <input type="button" class="delete-row-button hidden" value="delete">
+                                                            <input type="submit" class="save-row-button hidden" value="save">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <input type="button" class="add-row-button" value="add row">
+                                            </section>
+                                        </article>
+                                        <article class="panel-group clientcontactlog" id="">
+                                            <section class="panel panel-default">
+                                                <header class="panel-heading">
+                                                </header>
+                                                <div class="panel-collapse collapse in">
+                                                    <div class="panel-body add-row-functionality new-entry hidden row">
+                                                        <form action="/cases/savecaselogs" method="post">
+                                                            <input name="logtable" class="hidden" value="clientcontactlog">
+                                                            <input type="text" name="clientcontactid" class="hidden"> name of victim/ affected person
+                                                            <input type="text" name="nameofvictim" readonly> caseid
+                                                            <input type="text" name="caseid"> date
+                                                            <input type="text" name="date"> time
+                                                            <input type="text" name="time"> contacttype
+                                                            <select type="text" name="contacttype" data-list="contact"></select>
+                                                            numsupported
+                                                            <input type="text" name="numsupported"> othersupport
+                                                            <input type="text" name="othersupport"> name
+                                                            <input type="text" name="name"> attdocuments
+                                                            <input type="text" name="attdocuments"> outcomes
+                                                            <input type="text" name="outcomes"> vvworker
+                                                            <select type="text" name="vvworker" data-list='users'> </select>
+                                                            agreedcontacttime
+                                                            <input type="text" name="agreedcontacttime"> contactdetails
+                                                            <input type="text" name="contactdetails">
+
+                                                            <input type="button" class="edit-row-button" value="edit">
+                                                            <input type="button" class="delete-row-button hidden" value="delete">
+                                                            <input type="submit" class="save-row-button hidden" value="save">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <input type="button" class="add-row-button" value="add row">
+                                            </section>
+                                        </article>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+                    </article>
+                    <script>
+                        $('.add-row-button').click(function() {
+                            var container = $(this).siblings('.panel-collapse');
+                            container.children('.new-entry').removeClass('hidden');
+                            // if (container.children('.new-entry').length > 0) {} else {
+                            //     container.children('.add-row-functionality').last().clone().appendTo(container);
+                            //     container.children('.add-row-functionality').last().addClass('new-entry');
+                            //     container.children('.new-entry').find('.edit-row-button').toggleClass('hidden');
+                            container.children('.new-entry').find('.save-row-button').toggleClass('hidden');
+                            // }
+                        });
+                        $('body').on('click', '.edit-row-button', function() {
+                            // make row editable
+                            $(this).siblings().find('input, textarea, select, checkbox').prop('readonly', false);
+                            $(this).siblings('.delete-row-button').toggleClass('hidden')
+                            $(this).siblings('.save-row-button').toggleClass('hidden')
+                            $(this).toggleClass('hidden')
+
+                        });
+
+                        // cancel button which refreshes the page without making changes
+                    </script>
+
+                    <script src="/static/js/ajaxLoadModal.js"></script>
+
+                    <script>
+                        var i = 0;
+                        var maxNum = 0;
+                        var multElem;
+                        var prefix;
+                        var prefixLen;
+                        var dataCurr;
+
+                        function addMultiple(elem, num) {
+                            i = parseInt(elem.attr('data-curr'));
+                            if (i < num) {
+                                prefix = elem.attr('data-prefix');
+                                prefixLen = prefix.length;
+                                if (i > 1) {
+                                    prefixLen += 1
+                                };
+                                elem.clone().insertAfter(elem).attr('data-curr', i + 1);
+                                dataCurr = elem.siblings('.add-multiple').last().attr('data-curr');
+                                elem.siblings('.add-multiple').last().find('input, select, textarea').each(function() {
+                                        console.log($(this).parent().attr('data-curr'));
+                                        console.log($(this).attr('name'));
+                                        $(this).attr('name', prefix + dataCurr + $(this).attr('name').slice(prefixLen));
+                                        //$(this).attr('name', prefix + $(this).parent().attr('data-curr') + $(this).parent().siblings().first().children('input, select, textarea').first().attr('name').slice(prefixLen));
+                                    })
+                                    // clear input values
+
+                            }
+                            //i++;
+                        }
+                        $('.add-multiple-button').click(function() {
+
+                            multElem = $(this).prev('.add-multiple');
+                            if (multElem.hasClass('max-3')) maxNum = 3;
+                            if (multElem.hasClass('max-5')) maxNum = 5;
+                            addMultiple(multElem, maxNum);
+                        })
+
+                        function removeMultiple(elem) {
+                            console.log(elem);
+                            i = parseInt(elem.attr('data-curr'));
+                            console.log(i);
+                            if (i > 1) {
+                                elem.remove();
+                                // clear input values
+                            };
+                        }
+                        $('.add-multiple-button-remove').click(function() {
+
+                            multElem = $(this).prev().prev('.add-multiple');
+                            removeMultiple(multElem);
+                        })
+                    </script>
+                    <% include ./partials/footer %>
