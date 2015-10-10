@@ -1,12 +1,6 @@
 var knex = require('knex')({
-  client: 'postgres',
-  connection: {
-    host     : 'localhost',
-    user     : 'mg',
-    password : 'x',
-    database : 'victims_voice_db',
-    charset  : 'utf8'
-  }
+    client: 'postgres',
+    connection: process.env.DATABASE_URL
 });
 
 var DB = require('bookshelf')(knex);
