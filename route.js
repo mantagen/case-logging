@@ -72,10 +72,9 @@ var signInPost = function(req, res, next) {
 // user search / delete
 // GET
 var signUp = function(req, res, next) {
-    // if (!req.isAuthenticated()) {
-    //     res.redirect('/signin');
-    // }     else
-    if (!isEmpty(req.query.searchBy)) {
+    if (!req.isAuthenticated()) {
+        res.redirect('/signin');
+    } else if (!isEmpty(req.query.searchBy)) {
         // if there's been an actual query! (if someone searches for user)
         var searchBy = req.query.searchBy;
         console.log(req.query.searchBy);
