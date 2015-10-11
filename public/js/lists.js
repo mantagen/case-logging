@@ -316,7 +316,28 @@ var Lists = (function() {
     ];
 
 
-    var flags = [];
+    var flags = [
+        'Mental health',
+        'Self-harm risk',
+        'Suicide risk',
+        'Needs interpreter',
+        'Lip reads',
+        'Learning disability',
+        'Reading difficulties',
+        'Blind/partially sighted',
+        'Deaf/hard of hearing',
+        'Domestic abuse risk',
+        'Pets',
+        'Aggressive',
+        'Do not visit at home',
+        'Joint visits only',
+        'Do not call',
+        'Warrant for arrest',
+        'hoarding',
+        'smoker',
+        'please read notes on file',
+        'please speak to …….'
+    ];
     var gender = [];
     var ethnic = [];
     var religion = [];
@@ -362,15 +383,15 @@ var Lists = (function() {
 
 })();
 
-function fillSelect(list,name) {
+function fillSelect(list, name) {
     var option = '';
     for (var i = 0; i < list.length; i++) {
         option += '<option value="' + list[i] + '">' + list[i] + '</option>';
     }
-    $("select[data-list='"+name+"']").append(option);
+    $("select[data-list='" + name + "']").append(option);
 }
 
-for(var list in Lists){
+for (var list in Lists) {
     console.log(Lists[list], list);
     fillSelect(Lists[list], list);
 }

@@ -67,7 +67,7 @@
 
                                             <label for="report-by">Report taken by</label>
 
-                                            <select name="reporttakenby" id="report-by" data-list='users' required>
+                                            <select name="reporttakenby" id="report-by" data-list='users' >
                                             </select>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
@@ -179,14 +179,14 @@
                                             <input type="date" name="vicdob">
 
                                             <label for="victim-gender">Gender</label>
-                                            <select name="vicgender" id="victim-gender" dat-list='gender' required>
+                                            <select name="vicgender" id="victim-gender" dat-list='gender' >
                                             </select>
 
                                             <label for="victim-ethnicity">Ethnicity</label>
-                                            <select name="vicethic" id="" data-list='ethnic' required>
+                                            <select name="vicethic" id="" data-list='ethnic' >
                                             </select>
                                             <label for="victim-nationality">Nationality</label>
-                                            <select name="vicnationality" id="" data-list='nationality' required>
+                                            <select name="vicnationality" id="" data-list='nationality' >
                                             </select>
                                             <label for="victim-sexuality">Sexuality</label>
                                             <select name="vicsexuality" id="" data-list='sexuality'>
@@ -366,24 +366,15 @@
                                             </select>
 
                                             <label for="incidenttype">Type of hate crime</label>
-                                            <select name="incidenttype" id="" required>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
+                                            <select name="incidenttype" id="" data-list='reason' required>
                                             </select>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
                                             <label for="incidentspace">Location space</label>
-                                            <select name="incidentspace" id="">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
+                                            <select name="incidentspace" data-list='places' id="">
                                             </select>
                                             <label for="incidentform">Form of incident</label>
-                                            <select name="incidentform" id="">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
+                                            <select name="incidentform" data-list='form' id="">
                                             </select>
 
                                         </div>
