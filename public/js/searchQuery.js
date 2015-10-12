@@ -46,6 +46,7 @@ function showSearch(searchIn) {
 
 function populateForm(data) {
     $.each(data, function(key, value) {
+        $("input[name='password']").prop('readonly',true).css('text-indent','-999em');
         var keyCss = key.replace(/_/g, '');
         $("input[name='" + keyCss + "']").val(value);
         $("textarea[name='" + keyCss + "']").val(value);

@@ -44,6 +44,19 @@ passport.deserializeUser(function(username, done) {
    });
 });
 
+function requireRole(roles) {
+    return function(req, res, next) {
+        var total= 0;
+        for (var role in roles){
+            if(req.user && req.user.attributes.role === role)
+                console.log('tickerr');
+                total++;
+        }
+        console.log(total);
+        if(total>0) next();
+        else res.sendStatus(403);
+    };
+}
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
@@ -83,9 +96,9 @@ app.post('/signin', route.signInPost);
 
 // signup
 // GET
-app.get('/user-maintenance', route.signUp);
+app.get('/user-maintenance', requireRole(["Office staff","Case worker"]),route.signUp);
 // POST
-app.post('/user-maintenance', route.signUpPost);
+app.post('/user-maintenance', requireRole(["Office staff", "Case worker"]), route.signUpPost);
 
 
 

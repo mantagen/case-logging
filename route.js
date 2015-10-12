@@ -176,7 +176,7 @@ var signUpPost = function(req, res, next) {
     var user = req.body;
     var usernamePromise = null;
     usernamePromise = new Model.User({
-        userid: user.userid
+        username: user.username
     }).fetch();
 
     return usernamePromise.then(function(model) {

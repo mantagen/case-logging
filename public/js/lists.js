@@ -475,6 +475,14 @@ var Lists = (function() {
         '0ther, please write'
     ];
 
+    var accesslevel = [
+        'None',
+        'Read Only',
+        'User (Read/ Write/ Create)',
+        'Super User (read/ write/ create/ delete)',
+        'Administrator'
+    ];
+
     $.get('/fetchusers', function(data) {
         var name;
         data.forEach(function(user) {
@@ -525,7 +533,7 @@ var Lists = (function() {
         sexuality: sexuality,
         religion: religion,
         genderid: genderid,
-
+        accesslevel: accesslevel,
         caseworkers: caseworkers,
         users: users
     };
