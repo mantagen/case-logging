@@ -2,6 +2,10 @@ var searchResponse;
 var responseLinks = "";
 var firstRes = "";
 var secondRes = "";
+
+
+
+
 function showSearch(searchIn) {
     return function() {
         var searchFor = document.getElementById('search-for').value;
@@ -22,11 +26,11 @@ function showSearch(searchIn) {
                     searchResponse = JSON.parse(xmlhttp.responseText);
                     console.log(searchResponse);
                     if (searchResponse) {
-                        for(var i=0; i<searchResponse.length; i++){
+                        for (var i = 0; i < searchResponse.length; i++) {
                             firstRes = searchResponse[i].firstname || searchResponse[i].referral_date;
                             secondRes = searchResponse[i].lastname || searchResponse[i].vic_last_name;
                             console.log(firstRes);
-                            responseLinks += "<a href='#collapseTwo' data-parent='#accordion' data-toggle='collapse'  class='response-link' data-response='"+i+"' >"+firstRes+" "+secondRes+"</a>";
+                            responseLinks += "<a href='#collapseTwo' data-parent='#accordion' data-toggle='collapse'  class='response-link' data-response='" + i + "' >" + firstRes + " " + secondRes + "</a>";
                         }
                         document.getElementsByClassName('response-links')[0].innerHTML = responseLinks;
                         //populateForm(searchResponse);
@@ -45,9 +49,18 @@ function populateForm(data) {
         var keyCss = key.replace(/_/g, '');
         $("input[name='" + keyCss + "']").val(value);
         $("textarea[name='" + keyCss + "']").val(value);
-        $("select[name='" + keyCss + "'] option[value='"+value+"']").prop("selected",true);
+        $("select[name='" + keyCss + "'] option[value='" + value + "']").prop("selected", true);
+    });
+    $('input[type="checkbox"]').each(function() {
+        cb = $(this);
+        cb.prop('checked', cb.val());
     });
 }
+
+$('input[type="checkbox"]').change(function() {
+    cb = $(this);
+    cb.val(cb.prop('checked'));
+});
 
 $('.search-button').each(function() {
     var searchHere = $(this).attr('data-search');
@@ -55,8 +68,8 @@ $('.search-button').each(function() {
         showSearch(searchHere)
     );
 });
-    $('body').on('click','.response-links a', function(event){
-        event.preventDefault();
-        console.log($(this).attr('data-response'));
-        populateForm(searchResponse[$(this).attr('data-response')]);
-    });
+$('body').on('click', '.response-links a', function(event) {
+    event.preventDefault();
+    console.log($(this).attr('data-response'));
+    populateForm(searchResponse[$(this).attr('data-response')]);
+});

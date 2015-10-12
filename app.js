@@ -90,6 +90,8 @@ app.post('/user-maintenance', route.signUpPost);
 
 
 // cases
+app.get('/fetchusers', route.getUsers);
+app.get('/fetchcaseworkers', route.getCaseWorkers);
 //GET
 app.get('/cases', route.casesPage);
 //POST

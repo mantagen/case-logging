@@ -68,6 +68,36 @@ var signInPost = function(req, res, next) {
     })(req, res, next);
 };
 
+// Get users function
+//GET
+var getUsers = function(req, res, nex) {
+    if (!req.isAuthenticated()) {
+        res.redirect('/signin');
+    } else {
+        var allUsersPromise = new Model.User()
+            .fetchAll()
+            .then(function(users) {
+                res.json(users);
+            });
+    }
+};
+
+// Get caseworkers function
+//GET
+var getCaseWorkers = function(req, res, nex) {
+    if (!req.isAuthenticated()) {
+        res.redirect('/signin');
+    } else {
+        var caseWorkersPromise = new Model.User()
+            .where({
+                role: "Case worker"
+            })
+            .fetchAll()
+            .then(function(cws) {
+                res.json(cws);
+            });
+    }
+};
 
 // user search / delete
 // GET
@@ -146,14 +176,13 @@ var signUpPost = function(req, res, next) {
     var user = req.body;
     var usernamePromise = null;
     usernamePromise = new Model.User({
-        username: user.username
+        userid: user.userid
     }).fetch();
 
     return usernamePromise.then(function(model) {
         if (model) {
             // if the username exists, then update the user in the db
             console.log('newname', user.notes);
-
             model.save({
                 firstname: user.firstname,
                 lastname: user.lastname,
@@ -172,6 +201,7 @@ var signUpPost = function(req, res, next) {
                 thursday: user.thursday,
                 friday: user.friday,
                 saturday: user.saturday,
+                sunday: user.sunday,
                 access_level: user.accesslevel,
                 access_cases: user.accesscases,
                 access_contact_log: user.accesscontactlog,
@@ -198,25 +228,57 @@ var signUpPost = function(req, res, next) {
             var password = user.password;
             var hash = bcrypt.hashSync(password);
             var newUsername = user.firstname + '.' + user.lastname;
-            var signUpUser = new Model.User({
-                username: newUsername,
-                password: hash,
-                firstname: user.firstname,
-                lastname: user.lastname,
-                //role: user.role,
-                organisation: user.organisation,
-                address1: user.address1,
-                address2: user.address2,
-                town: user.town,
-                county: user.county,
-                phone: user.phone,
-                phone_alt: user.phonealt
-            });
+            console.log(newUsername);
+            usernameCheck = new Model.User({
+                    username: newUsername
+                }).fetch()
+                .then(function(model) {
+                    if (model) {
+                        newUsername += '1';
+                        console.log(newUsername);
+                    }
+                    var signUpUser = new Model.User({
+                        username: newUsername,
+                        password: hash,
+                        firstname: user.firstname,
+                        lastname: user.lastname,
+                        role: user.role,
+                        organisation: user.organisation,
+                        address1: user.address1,
+                        address2: user.address2,
+                        town: user.town,
+                        county: user.county,
+                        postcode: user.postcode,
+                        phone: user.phone,
+                        phone_alt: user.phonealt,
+                        email: user.email,
+                        monday: user.monday,
+                        tuesday: user.tuesday,
+                        wednesday: user.wednesday,
+                        thursday: user.thursday,
+                        friday: user.friday,
+                        saturday: user.saturday,
+                        sunday: user.sunday,
+                        access_level: user.accesslevel,
+                        access_cases: user.accesscases,
+                        access_contact_log: user.accesscontactlog,
+                        access_action_log: user.accessactionlog,
+                        access_outreach_log: user.accessoutreachlog,
+                        access_interventions_log: user.accessinterventionslog,
+                        access_satisfaction_survey: user.accesssatisfactionsurvey,
+                        access_user_maintenance: user.accessusermaintenance,
+                        access_partners_log: user.accesspartnerslog,
+                        access_reports: user.accessreports,
+                        current_employee: user.currentemployee,
+                        notes: user.notes
+                    });
 
-            signUpUser.save().then(function(model) {
-                // sign in the newly registered user
-                signInPost(req, res, next);
-            });
+                    signUpUser.save().then(function(model) {
+                        // sign in the newly registered user
+                        signInPost(req, res, next);
+                    });
+                });
+
         }
     });
 };
@@ -1383,6 +1445,12 @@ module.exports.signUp = signUp;
 // POST
 module.exports.signUpPost = signUpPost;
 
+
+
+//getUsers
+module.exports.getUsers = getUsers;
+//getCaseWorkers
+module.exports.getCaseWorkers = getCaseWorkers;
 // cases
 // casesPage GET
 module.exports.casesPage = casesPage;

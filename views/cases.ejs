@@ -100,8 +100,8 @@
                                             <input type="text" name="refrole">
                                             <label for="victim-aware">Does the victim know you are making the report?</label>
                                             <select name="refvictimaware" id="victim-aware">
-                                                <option value="1">Yes</option>
-                                                <option value="0">No</option>
+                                                <option value="t">Yes</option>
+                                                <option value="f">No</option>
                                             </select>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
@@ -132,14 +132,14 @@
                                             <input type="text" name="refreferrer">
                                             <label for="referrer-feedback">Does the referrer want feedback?</label>
                                             <select name="reffeedback" id="">
-                                                <option value="1">Yes</option>
-                                                <option value="0">No</option>
+                                                <option value="t">Yes</option>
+                                                <option value="f">No</option>
                                             </select>
 
                                             <label for="referrer-permission">Does the referrer have permission?</label>
                                             <select name="refpermmision" id="">
-                                                <option value="1">Yes</option>
-                                                <option value="0">No</option>
+                                                <option value="t">Yes</option>
+                                                <option value="f">No</option>
                                             </select>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
@@ -179,7 +179,7 @@
                                             <input type="date" name="vicdob">
 
                                             <label for="victim-gender">Gender</label>
-                                            <select name="vicgender" id="victim-gender" dat-list='gender' >
+                                            <select name="vicgender" id="victim-gender" data-list='gender' >
                                             </select>
 
                                             <label for="victim-ethnicity">Ethnicity</label>
@@ -195,7 +195,7 @@
                                             <select name="vicrorb" id="" data-list='religion'>
                                             </select>
                                             <label for="victim-gender-id">Gender ID</label>
-                                            <select name="vicgenderid" id="" data-list='religion'>
+                                            <select name="vicgenderid" id="" data-list='genderid'>
                                             </select>
 
                                             <label for="victim-age">Age (auto)</label>
@@ -230,8 +230,8 @@
                                             </select>
                                             <label for="victim-pets">Pets?</label>
                                             <select name="vicpets" id="">
-                                                <option value="1">Yes</option>
-                                                <option value="0">No</option>
+                                                <option value="t">Yes</option>
+                                                <option value="f">No</option>
                                             </select>
                                             <label for="victim-ward">Ward (?)</label>
                                             <input type="text" name="vicward">
@@ -270,8 +270,8 @@
                                                     <h4>Other support</h4>
                                                     <label for="othersupport-permission">Permission to conact?</label>
                                                     <select name="othersupportpermission" id="">
-                                                        <option value="1">Yes</option>
-                                                        <option value="0">No</option>
+                                                        <option value="t">Yes</option>
+                                                        <option value="f">No</option>
                                                     </select>
 
                                                     <label for="othersupportoganisation">Organisation name</label>
@@ -330,13 +330,13 @@
                                             <div class="col-xs-12 col-sm-6 col-md-3">
                                                 <label for="incidentporeported">Has it been reported to the police?</label>
                                                 <select name="incidentporeported" id="" required="">
-                                                    <option value="1">Yes</option>
-                                                    <option value="0">No</option>
+                                                    <option value="t">Yes</option>
+                                                    <option value="f">No</option>
                                                 </select>
                                                 <label for="incidentpowanted">Do they want police involvement?</label>
                                                 <select name="incidentpowanted" id="">
-                                                    <option value="1">Yes</option>
-                                                    <option value="0">No</option>
+                                                    <option value="t">Yes</option>
+                                                    <option value="f">No</option>
                                                 </select>
                                             </div>
                                             <div class="col-xs-12 col-sm-6 col-md-3">
@@ -392,8 +392,8 @@
                                         <div class="col-xs-12 col-sm-6 col-md-3">
                                             <label for="">Did it take place on public transport?</label>
                                             <select name="incidenttrans" id="">
-                                                <option value="1">Yes</option>
-                                                <option value="0">No</option>
+                                                <option value="t">Yes</option>
+                                                <option value="f">No</option>
                                             </select>
                                             <label for="trans-town">Town of public transport</label>
                                             <select name="incidenttranstown" id="" data-list='towns'>
@@ -426,8 +426,8 @@
                                         <div class="col-xs-12 col-sm-6 col-md-3">
                                             <label for="incidentinjured">Was anyone injured?</label>
                                             <select name="incidentinjury" id="">
-                                                <option value="true">Yes</option>
-                                                <option value="false">No</option>
+                                                <option value="t">Yes</option>
+                                                <option value="f">No</option>
                                             </select>
 
                                             <label for="incidentinjury-details">Injury details</label>
@@ -436,16 +436,16 @@
                                         <div class="col-xs-12 col-sm-6 col-md-3">
                                             <label for="incidentproperty">Damage/loss of propery</label>
                                             <select name="incidentproperty" id="">
-                                                <option value="1">Yes</option>
-                                                <option value="0">No</option>
+                                                <option value="t">Yes</option>
+                                                <option value="f">No</option>
                                             </select>
                                             <textarea name="incidentpropertydetail" rows="8" cols="100"></textarea>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
                                             <label for="incidentwitnesses">Any witnesses?</label>
                                             <select name="incidentwitness" id="">
-                                                <option value="1">Yes</option>
-                                                <option value="0">No</option>
+                                                <option value="t">Yes</option>
+                                                <option value="f">No</option>
                                             </select>
 
                                             <label for="incidentwitness-details"></label>
@@ -454,8 +454,8 @@
                                         <div class="col-xs-12 col-sm-6 col-md-3">
                                             <label for="cctv-coverage">CCTV coverage?</label>
                                             <select name="incidentcctv" id="">
-                                                <option value="1">Yes</option>
-                                                <option value="0">No</option>
+                                                <option value="t">Yes</option>
+                                                <option value="f">No</option>
                                             </select>
 
                                             <label for="cctv-coverage-details">CCTV coverage details</label>
@@ -483,8 +483,8 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-3">
                                                     <label for="offenderknown">Did the victim know them?</label>
                                                     <select name="offenderknown" id="">
-                                                        <option value="1">Yes</option>
-                                                        <option value="0">No</option>
+                                                        <option value="t">Yes</option>
+                                                        <option value="f">No</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-6">
@@ -632,8 +632,8 @@
                                                 <div class="col-xs-12 col-sm-6 col-md-3">
                                                     <label for="organisation">Do this other person have an organisation working with them?</label>
                                                     <select name="othersorg" id="">
-                                                        <option value="1">Yes</option>
-                                                        <option value="0">No</option>
+                                                        <option value="t">Yes</option>
+                                                        <option value="f">No</option>
                                                     </select>
 
                                                     <label for="organisation-name">Organisation name</label>
@@ -661,7 +661,7 @@
                                                     <label for="othersorganisation-mobile"> Mobile no.</label>
                                                     <input type="text" name="othersorgmob">
                                                     <label for="othersorganisation-email"> Email address</label>
-                                                    <input type="text" name="othersorgemail">
+                                                    <input type="text" name="otherstorgemail">
                                                     <label for="othersorgbesttime">Preferred time of contact? </label>
                                                     <input type="text" name="othersorgbesttime">
                                                     <label for="othersorganisation-preferred-contact">Preferred type of contact?</label>
@@ -672,8 +672,8 @@
 
                                                     <label for="othersorganisation-feedback">Does the organisation want feedback?</label>
                                                     <select name="othersorgfeedback" id="">
-                                                        <option value="1">Yes</option>
-                                                        <option value="0">No</option>
+                                                        <option value="t">Yes</option>
+                                                        <option value="f">No</option>
                                                     </select>
 
                                                     <label for="othersother-info"></label>
@@ -681,8 +681,8 @@
 
                                                     <label for="othersorganisation-permission">Do we have permission to talk to the other organisation??</label>
                                                     <select name="othersorgpermission" id="">
-                                                        <option value="1">Yes</option>
-                                                        <option value="0">No</option>
+                                                        <option value="t">Yes</option>
+                                                        <option value="f">No</option>
                                                     </select>
 
                                                 </div>
@@ -696,8 +696,8 @@
 
                                             <label for="general-similar-before">Has the victim experienced similar incidents before?</label>
                                             <select name="generalsimilarbefore" id="">
-                                                <option value="1">Yes</option>
-                                                <option value="0">No</option>
+                                                <option value="t">Yes</option>
+                                                <option value="f">No</option>
                                             </select>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">

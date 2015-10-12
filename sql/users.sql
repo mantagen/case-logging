@@ -20,6 +20,7 @@ create table if not exists tblusers(
    thursday boolean,
    friday boolean,
    saturday boolean,
+   sunday boolean,
    access_level text,
    access_cases boolean,
    access_contact_log boolean,

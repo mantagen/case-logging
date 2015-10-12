@@ -338,12 +338,161 @@ var Lists = (function() {
         'please read notes on file',
         'please speak to …….'
     ];
-    var gender = [];
-    var ethnic = [];
-    var religion = [];
-    var nationality = [];
-    var genderid = [];
-    var sexuality = [];
+    var gender = [
+        'male ',
+        'female',
+        'prefer not to say'
+    ];
+    var ethnic = [
+        'White British/English/Welsh/Scottish/Northern Irish',
+        'White Irish',
+        'White Gypsy or Irish Traveller',
+        'Any other White background, please write',
+        'Mixed White & Black Caribbean',
+        'Mixed White & Black African',
+        'Mixed White & Asian',
+        'Any other Mixed Heritage background, please write',
+        'Asian British ',
+        'Asian Indian',
+        'Asian Pakistani',
+        'Asian Bangladeshi',
+        'Asian Chinese',
+        'Any other Asian background, please write',
+        'Black British',
+        'Black African',
+        'Black Caribbean',
+        'Any other Black background, please write',
+        'Arab',
+        'Any other ethnic background, please write'
+    ];
+    var religion = [
+        'Buddhist',
+        'Christian',
+        'Hindu',
+        'Jewish',
+        'Muslim',
+        'Sikh',
+        'Atheist',
+        'not stated',
+        'no religion',
+        'other'
+    ];
+    var nationality = [
+        'British',
+        'Indian',
+        'Polish',
+        'Pakistani',
+        'Irish',
+        'German',
+        'Bangladeshi',
+        'South African',
+        'Chinese',
+        'American',
+        'Nigerian',
+        'Romanian',
+        'Italian',
+        'French',
+        'Sri Lankan',
+        'Lithuanian',
+        'Jamaican',
+        'Kenyan',
+        'Filipino',
+        'Portuguese',
+        'Australian',
+        'Zimbabwean',
+        'Spainish',
+        'Somalian',
+        'Latvian',
+        'Ghanaian',
+        'Canadian',
+        'Turkish',
+        'Afghanistani',
+        'Iranian',
+        'Hungarian',
+        'Iraqi',
+        'Slovakian',
+        'Nepalese',
+        'Dutch',
+        'Bulgarian',
+        'Malaysian',
+        'New Zealander',
+        'Cypriot',
+        'Greek',
+        'Ugandan',
+        'Brazilian',
+        'Singaporean',
+        'Czech ',
+        'Mauritian',
+        'Russian',
+        'Thai',
+        'Taiwanese',
+        'Egyptian',
+        'Saudi Arabian',
+        'Tanzanian',
+        'Zambian',
+        'Japanese',
+        'Vietnamese',
+        'Maltese',
+        'Swedish',
+        'Danish',
+        'Congolese',
+        'Libyan',
+        'Colombian',
+        'Sierra Leonean',
+        'other, please write'
+    ];
+    var genderid = [
+        'Agender',
+        'Androgynous',
+        'Bigender',
+        'Cisgender',
+        'FTM',
+        'MTF',
+        'Gender Fluid',
+        'Gender Nonconforming',
+        'Gender Variant',
+        'Genderqueer',
+        'Intersex',
+        'Neutrois',
+        'Non-binary',
+        'Pangender',
+        'Trans*',
+        'Trans Man',
+        'Trans Woman',
+        'Trans Person',
+        'Transgender',
+        'Transsexual',
+        'other, please write'
+    ];
+    var sexuality = [
+        'Asexual',
+        'Bisexual',
+        'Gay Man',
+        'Gay Woman',
+        'Lesbian',
+        'Heterosexual',
+        'Pansexual',
+        '0ther, please write'
+    ];
+
+    $.get('/fetchusers', function(data) {
+        var name;
+        data.forEach(function(user) {
+            name = user.firstname + " " + user.lastname;
+            users.push(name);
+        });
+        console.log(users);
+        fillSelect(users, 'users');
+    });
+    $.get('/fetchcaseworkers', function(data) {
+        var name;
+        data.forEach(function(user) {
+            name = user.firstname + " " + user.lastname;
+            caseworkers.push(name);
+        });
+        console.log(caseworkers);
+        fillSelect(caseworkers, 'caseworkers');
+    });
     var caseworkers = [];
     var users = [];
 
@@ -392,9 +541,10 @@ function fillSelect(list, name) {
 }
 
 for (var list in Lists) {
-    console.log(Lists[list], list);
     fillSelect(Lists[list], list);
 }
+
+
 // <select name="search-by" id="search-by">
 //     <option value="log-no">Log number</option>
 //     <option value="lastname">Last name</option>
