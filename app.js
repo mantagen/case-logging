@@ -47,13 +47,11 @@ passport.deserializeUser(function(username, done) {
 function requireRole(roles) {
     return function(req, res, next) {
         var total= 0;
-        for (var role in roles){
+        roles.forEach(function(role){
             if(req.user && req.user.attributes.access_level === role){
-                console.log('tickerr');
                 total++;
             }
-        }
-        console.log(total);
+        });
         if(total>0) next();
         else res.sendStatus(403);
     };
