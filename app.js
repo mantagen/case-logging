@@ -97,9 +97,9 @@ app.post('/signin', route.signInPost);
 
 // signup
 // GET
-app.get('/user-maintenance', requireRole(["Administrator"]),route.signUp);
+app.get('/user-maintenance',route.signUp);
 // POST
-app.post('/user-maintenance', requireRole(["Administrator"]), route.signUpPost);
+app.post('/user-maintenance', route.signUpPost);
 
 
 
