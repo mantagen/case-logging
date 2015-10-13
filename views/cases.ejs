@@ -29,9 +29,11 @@
                                         </select>
                                     </div>
                                     <div class="col-xs-12 col-sm-6 col-md-3">
+                                        </label>
                                         <input type="text" id="search-for" placeholder=" search for...">
                                     </div>
                                     <div class="col-xs-12 col-sm-6 col-md-3">
+                                        </label>
                                         <input type="button" class="search-button" data-search="cases" value="search">
                                     </div>
                                     <div class="col-xs-12 response-links">
@@ -51,7 +53,9 @@
                                     <div class="panel-body row">
                                         <div class="col-xs-12 col-sm-6 col-md-3">
                                             <span>Log number</span>
+                                            </label>
                                             <input id="log-number" type="number" name="lognumber" value="" required>
+                                            </label>
                                             <input id="case-id" name="caseid" class="hidden">
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
@@ -63,11 +67,12 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
                                             <span>Referral date</span>
+                                            </label>
                                             <input type="date" name="referraldate" required>
 
                                             <label for="report-by">Report taken by</label>
 
-                                            <select name="reporttakenby" id="report-by" data-list='users' >
+                                            <select name="reporttakenby" id="report-by" data-list='users'>
                                             </select>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
@@ -79,6 +84,7 @@
                                         <div class="col-xs-12 col-sm-6 col-md-3">
 
                                             <span>Date assigned</span>
+                                            </label>
                                             <input type="date" name="assigneddate" readonly>
                                         </div>
                                         <!-- referral info -->
@@ -91,12 +97,16 @@
                                             <select name="referraltype" id="referral-type" data-list="referral">
                                             </select>
                                             <label for="reforganisation">Referrer organisation</label>
+                                            </label>
                                             <input type="text" name="reforganisation">
                                             <label for="reffirstname">First name</label>
+                                            </label>
                                             <input type="text" name="reffirstname">
                                             <label for="referrer-lastname">Last name</label>
+                                            </label>
                                             <input type="text" name="reflastname">
                                             <label for="referrer-role">Role</label>
+                                            </label>
                                             <input type="text" name="refrole">
                                             <label for="victim-aware">Does the victim know you are making the report?</label>
                                             <select name="refvictimaware" id="victim-aware">
@@ -106,22 +116,30 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
                                             <label for="refadd1">Address line 1</label>
+                                            </label>
                                             <input type="text" name="refadd1">
                                             <label for="referrer-add2">Address line 2 </label>
+                                            </label>
                                             <input type="text" name="refadd2">
                                             <label for="referrer-town">Town </label>
+                                            </label>
                                             <input type="text" name="reftown" data-list='towns'>
                                             <label for="referrer-post-code">Postcode </label>
+                                            </label>
                                             <input type="text" name="refpostcode">
                                             <label for="referrer-tel">Tel no.</label>
+                                            </label>
                                             <input type="text" name="reftel">
                                             <label for="referrer-mobile"> Mobile no.</label>
+                                            </label>
                                             <input type="text" name="refmob">
                                             <label for="referrer-email"> Email address</label>
+                                            </label>
                                             <input type="text" name="refemail">
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
                                             <label for="referrer-best-time">Preferred time of contact? </label>
+                                            </label>
                                             <input type="text" name="refbesttime">
                                             <label for="referrer-preferred-contact">Preferred type of contact?</label>
                                             <select name="refpreferredcontact" id="">
@@ -129,6 +147,7 @@
                                                 <option value="email">Email</option>
                                             </select>
                                             <label for="refreferrer">How did the referrer hear about us?</label>
+                                            </label>
                                             <input type="text" name="refreferrer">
                                             <label for="referrer-feedback">Does the referrer want feedback?</label>
                                             <select name="reffeedback" id="">
@@ -151,7 +170,9 @@
                                                     <select name="flags" id="" data-list='flags'>
                                                     </select>
                                                 </div>
+                                                </label>
                                                 <input type="button" class='add-multiple-button' value='Add'>
+                                                </label>
                                                 <input type="button" class="add-multiple-button-remove" value='remove'>
                                             </div>
                                         </div>
@@ -169,24 +190,27 @@
                                     <div class="panel-body">
                                         <div class="col-xs-12 col-sm-6 col-md-3">
                                             <label for="victim-firstname">First name</label>
+                                            </label>
                                             <input type="text" name="vicfirstname" required>
                                             <label for="victim-lastname">Last name</label>
+                                            </label>
                                             <input type="text" name="viclastname" required>
                                             <label for="victim-title">Title</label>
                                             <select name="victitle" data-list='title'></select>
 
                                             <label for="victim-dob">Date of birth</label>
+                                            </label>
                                             <input type="date" name="vicdob">
 
                                             <label for="victim-gender">Gender</label>
-                                            <select name="vicgender" id="victim-gender" data-list='gender' >
+                                            <select name="vicgender" id="victim-gender" data-list='gender'>
                                             </select>
 
                                             <label for="victim-ethnicity">Ethnicity</label>
-                                            <select name="vicethic" id="" data-list='ethnic' >
+                                            <select name="vicethic" id="" data-list='ethnic'>
                                             </select>
                                             <label for="victim-nationality">Nationality</label>
-                                            <select name="vicnationality" id="" data-list='nationality' >
+                                            <select name="vicnationality" id="" data-list='nationality'>
                                             </select>
                                             <label for="victim-sexuality">Sexuality</label>
                                             <select name="vicsexuality" id="" data-list='sexuality'>
@@ -199,31 +223,39 @@
                                             </select>
 
                                             <label for="victim-age">Age (auto)</label>
+                                            </label>
                                             <input type="number" name="vicage">
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
 
                                             <label for="victim-add1">Address line 1</label>
+                                            </label>
                                             <input type="text" name="vicadd1">
                                             <label for="victim-add2">Address line 2 </label>
+                                            </label>
                                             <input type="text" name="vicadd2">
                                             <label for="victim-town">Town </label>
                                             <select type="text" name="victown" data-list='towns' required></select>
                                             <label for="victim-post-code">Postcode </label>
+                                            </label>
                                             <input type="text" name="vicpostcode">
                                             <label for="victim-tenure">Tenure</label>
                                             <select name="victenure" id="" data-list='tenure'>
                                             </select>
 
                                             <label for="victel">Tel no.</label>
+                                            </label>
                                             <input type="text" name="victel" required>
                                             <label for="victim-mobile"> Alt no.</label>
+                                            </label>
                                             <input type="text" name="vicmob">
                                             <label for="victim-email"> Email address</label>
+                                            </label>
                                             <input type="text" name="vicemail">
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
                                             <label for="victim-best-time">Preferred time of contact? </label>
+                                            </label>
                                             <input type="text" name="vicbesttime">
                                             <label for="victim-preferred-contact">Preferred type of contact?</label>
                                             <select name="vicpreferredcontact" id="" data-list='prefer'>
@@ -234,8 +266,10 @@
                                                 <option value="f">No</option>
                                             </select>
                                             <label for="victim-ward">Ward (?)</label>
+                                            </label>
                                             <input type="text" name="vicward">
                                             <label for="victim-disabilities">Disabilities?</label>
+                                            </label>
                                             <input type="text" name="vicdisabilities">
                                             <label for="vicotherinfo">Other info</label>
                                             <textarea type="text" name="vicotherinfo"></textarea>
@@ -249,16 +283,22 @@
                                                 <label for="cohabtitle">Title</label>
                                                 <select type="text" name="cohabtitle" data-list='title'></select>
                                                 <label for="cohabfirstname">First name</label>
+                                                </label>
                                                 <input type="text" name="cohabfirstname">
                                                 <label for="cohablastname">Last name</label>
+                                                </label>
                                                 <input type="text" name="cohablastname">
                                                 <label for="cohabdob">Date of birth</label>
+                                                </label>
                                                 <input type="date" name="cohabdob">
                                                 <label for="cohabrelationship">Relationship</label>
+                                                </label>
                                                 <input type="text" name="cohabrelationship">
                                             </div>
 
+                                            </label>
                                             <input type="button" class='add-multiple-button' value='Add'>
+                                            </label>
                                             <input type="button" class="add-multiple-button-remove" value='remove'>
                                         </div>
                                         <div class="col-xs-12">
@@ -275,34 +315,44 @@
                                                     </select>
 
                                                     <label for="othersupportoganisation">Organisation name</label>
+                                                    </label>
                                                     <input type="text" name="othersupportorganisation">
                                                 </div>
                                                 <div class="col-xs-12 col-sm-6 col-md-3">
                                                     <label for="othersupporttitle">Title</label>
                                                     <select type="text" name="othersupporttitle" data-list='title'></select>
                                                     <label for="othersupportfirstname">First name</label>
+                                                    </label>
                                                     <input type="text" name="othersupportfirstname">
                                                     <label for="othersupportlastname">Last name</label>
+                                                    </label>
                                                     <input type="text" name="othersupportlastname">
                                                     <label for="othersupportadd1">Address line 1</label>
+                                                    </label>
                                                     <input type="text" name="othersupportadd1">
                                                     <label for="othersupportadd2">Address line 2 </label>
+                                                    </label>
                                                     <input type="text" name="othersupportadd2">
                                                 </div>
                                                 <div class="col-xs-12 col-sm-6 col-md-3">
                                                     <label for="othersupporttown">Town </label>
                                                     <select type="text" name="othersupporttown" data-list='towns'></select>
                                                     <label for="othersupportpost-code">Postcode </label>
+                                                    </label>
                                                     <input type="text" name="othersupportpost-code">
                                                     <label for="othersupporttel">Tel no.</label>
+                                                    </label>
                                                     <input type="text" name="othersupporttel">
                                                     <label for="othersupportmobile"> Mobile no.</label>
+                                                    </label>
                                                     <input type="text" name="othersupportmob">
                                                 </div>
                                                 <div class="col-xs-12 col-sm-6 col-md-3">
                                                     <label for="othersupportemail"> Email address</label>
+                                                    </label>
                                                     <input type="text" name="othersupportemail">
                                                     <label for="othersupportbest-time">Preferred time of contact? </label>
+                                                    </label>
                                                     <input type="text" name="othersupportbesttime">
                                                     <label for="othersupportpreferred-contact">Preferred type of contact?</label>
                                                     <select name="othersupportpreferredcontact" id="">
@@ -310,10 +360,13 @@
                                                         <option value="email">Email</option>
                                                     </select>
                                                     <label for="othersupportrelationship">Relationship </label>
+                                                    </label>
                                                     <input type="text" name="othersupportrelationship">
                                                 </div>
                                             </div>
+                                            </label>
                                             <input type="button" class='add-multiple-button' value='Add'>
+                                            </label>
                                             <input type="button" class="add-multiple-button-remove" value='remove'>
                                         </div>
                                     </div>
@@ -341,23 +394,29 @@
                                             </div>
                                             <div class="col-xs-12 col-sm-6 col-md-3">
                                                 <label for="incidentpolog">Police log number</label>
+                                                </label>
                                                 <input type="text" name="incidentpolog">
                                                 <label for="police-date">Date of police report</label>
+                                                </label>
                                                 <input type="date" name="indentpodate">
                                             </div>
                                             <div class="col-xs-12 col-sm-6 col-md-3">
                                                 <label for="police-name">Name of officer</label>
+                                                </label>
                                                 <input type="text" name="incidentponame">
                                             </div>
                                             <div class="col-xs-12 col-sm-6 col-md-3">
                                                 <label for="police-badge">Badge number</label>
+                                                </label>
                                                 <input type="text" name="incidentpobadge">
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
                                             <label for="incidentdate">Date of incident</label>
+                                            </label>
                                             <input type="date">
                                             <label for="incidenttime">Time of incident</label>
+                                            </label>
                                             <input type="time">
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
@@ -380,10 +439,14 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
                                             <label for="incidentaddress">Address where incident took place</label>
+                                            </label>
                                             <input type="text" name="incidentadd1">
+                                            </label>
                                             <input type="text" name="incidentadd2">
+                                            </label>
                                             <input type="text" name="incidentpostcode" placeholder="postcode">
                                             <label for="incidenthowaffected">How has the incident affected the victim?</label>
+                                            </label>
                                             <input type="text" name="incidenthowaffected">
                                         </div>
                                         <div class="col-xs-12">
@@ -405,14 +468,17 @@
                                         <div class="col-xs-12 col-sm-6 col-md-3">
 
                                             <label for="trans-service">Number of service</label>
+                                            </label>
                                             <input type="text" name="incidenttransservicenumber">
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
                                             <label for="trans-from">Travelling from</label>
+                                            </label>
                                             <input type="text" name="incidenttransfrom">
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
                                             <label for="trans-to">Travelling to</label>
+                                            </label>
                                             <input type="text" name="incidenttransto">
                                         </div>
                                         <div class="col-xs-12">
@@ -475,6 +541,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
                                             <label for="offenderno">How many were there?</label>
+                                            </label>
                                             <input type="integer" name="offenderno">
                                         </div>
                                         <div>
@@ -495,14 +562,17 @@
                                                 </div>
                                                 <div class="col-xs-12 col-sm-6 col-md-3">
                                                     <label for="offenderfirstname">First name</label>
+                                                    </label>
                                                     <input type="text" name="offenderfirstname">
                                                     <label for="offenderlastname">Last name</label>
+                                                    </label>
                                                     <input type="text" name="offenderlastname">
                                                     <label for="offendertitle">Title</label>
                                                     <select name="offendertitle" data-list='title'>
                                                     </select>
 
                                                     <label for="offenderage">Age (auto)</label>
+                                                    </label>
                                                     <input type="number" name="offenderage">
 
 
@@ -516,23 +586,31 @@
                                                 </div>
                                                 <div class="col-xs-12 col-sm-6 col-md-3">
                                                     <label for="offenderadd1">Address line 1</label>
+                                                    </label>
                                                     <input type="text" name="offenderadd1">
                                                     <label for="offenderadd2">Address line 2 </label>
+                                                    </label>
                                                     <input type="text" name="offenderadd2">
                                                     <label for="offendertown">Town </label>
                                                     <select type="text" name="offendertown" data-list='towns'></select>
                                                     <label for="offenderpostcode">Postcode </label>
+                                                    </label>
                                                     <input type="text" name="offenderpostcode">
 
                                                     <label for="offendertel">Tel no.</label>
+                                                    </label>
                                                     <input type="text" name="offendertel">
                                                     <label for="offendermob"> Mobile no.</label>
+                                                    </label>
                                                     <input type="text" name="offendermob">
                                                     <label for="offenderemail"> Email address</label>
+                                                    </label>
                                                     <input type="text" name="offenderemail">
                                                 </div>
                                             </div>
+                                            </label>
                                             <input type="button" class='add-multiple-button' value='Add'>
+                                            </label>
                                             <input type="button" class="add-multiple-button-remove" value='remove'>
                                         </div>
                                         <div class="col-xs-12 col-sm-6">
@@ -545,18 +623,22 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
                                             <label for="offendervehicle-make">Vehicle make</label>
+                                            </label>
                                             <input type="text" name="offendervehiclemake">
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
                                             <label for="offendervehicle-model">Model</label>
+                                            </label>
                                             <input type="text" name="offendervehiclemodel">
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
                                             <label for="offendervehicle-colour">Colour</label>
+                                            </label>
                                             <input type="text" name="offendervehiclecolour">
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-3">
                                             <label for="offendervehicle-reg">Registration number</label>
+                                            </label>
                                             <input type="text" name="offendervehiclereg">
                                         </div>
                                     </div>
@@ -575,15 +657,19 @@
                                                 <h4>Other involved</h4>
                                                 <div class="col-xs-12 col-sm-6 col-md-3">
                                                     <label for="othersfirstname">First name</label>
+                                                    </label>
                                                     <input type="text" name="othersfirstname">
                                                     <label for="otherslastname">Last name</label>
+                                                    </label>
                                                     <input type="text" name="otherslastname">
                                                     <label for="otherstitle">Title</label>
                                                     <select name="otherstitle" data-list='title'>
                                                     </select>
                                                     <label for="othersdob">Date of birth</label>
+                                                    </label>
                                                     <input type="date" name="othersdob">
                                                     <label for="othersage">Age</label>
+                                                    </label>
                                                     <input type="integer" name="othersage">
 
                                                     <label for="othersgender">Gender</label>
@@ -609,24 +695,32 @@
                                                 </div>
                                                 <div class="col-xs-12 col-sm-6 col-md-3">
                                                     <label for="othersadd1">Address line 1</label>
+                                                    </label>
                                                     <input type="text" name="othersadd1">
                                                     <label for="othersadd2">Address line 2 </label>
+                                                    </label>
                                                     <input type="text" name="othersadd2">
                                                     <label for="otherstown">Town </label>
                                                     <select type="text" name="otherstown" data-list='towns'></select>
                                                     <label for="otherspostcode">Postcode </label>
+                                                    </label>
                                                     <input type="text" name="otherspost-code">
 
                                                     <label for="otherstel">Tel no.</label>
+                                                    </label>
                                                     <input type="text" name="otherstel">
                                                     <label for="othersmobile"> Mobile no.</label>
+                                                    </label>
                                                     <input type="text" name="othersmob">
                                                     <label for="othersemail"> Email address</label>
+                                                    </label>
                                                     <input type="text" name="othersemail">
 
                                                     <label for="relationship">Relationship to victim</label>
+                                                    </label>
                                                     <input type="text" name="othersrelationship">
                                                     <label for="school">Which school or college</label>
+                                                    </label>
                                                     <input type="text" name="othersschool">
                                                 </div>
                                                 <div class="col-xs-12 col-sm-6 col-md-3">
@@ -637,32 +731,43 @@
                                                     </select>
 
                                                     <label for="organisation-name">Organisation name</label>
+                                                    </label>
                                                     <input type="text" name="othersorgname">
 
                                                     <label for="othersorganisation-firstname">First name</label>
+                                                    </label>
                                                     <input type="text" name="othersorgfirstname">
                                                     <label for="othersorganisation-lastname">Last name</label>
+                                                    </label>
                                                     <input type="text" name="othersorglastname">
                                                     <label for="othersorganisation-role">Role</label>
+                                                    </label>
                                                     <input type="text" name="othersorgrole">
 
                                                     <label for="othersorganisation-add1">Address line 1</label>
+                                                    </label>
                                                     <input type="text" name="othersorgadd1">
                                                     <label for="othersorganisation-add2">Address line 2 </label>
+                                                    </label>
                                                     <input type="text" name="othersorgadd2">
                                                     <label for="othersorganisation-town">Town </label>
                                                     <select type="text" name="othersorgtown" data-list='towns'></select>
                                                     <label for="othersorgpostcode">Postcode </label>
+                                                    </label>
                                                     <input type="text" name="othersorgpostcode">
                                                 </div>
                                                 <div class="col-xs-12 col-sm-6 col-md-3">
                                                     <label for="othersorgtel">Tel no.</label>
+                                                    </label>
                                                     <input type="text" name="othersorgtel">
                                                     <label for="othersorganisation-mobile"> Mobile no.</label>
+                                                    </label>
                                                     <input type="text" name="othersorgmob">
                                                     <label for="othersorganisation-email"> Email address</label>
+                                                    </label>
                                                     <input type="text" name="otherstorgemail">
                                                     <label for="othersorgbesttime">Preferred time of contact? </label>
+                                                    </label>
                                                     <input type="text" name="othersorgbesttime">
                                                     <label for="othersorganisation-preferred-contact">Preferred type of contact?</label>
                                                     <select name="othersorgpreferredcontact" id="">
@@ -687,7 +792,9 @@
 
                                                 </div>
                                             </div>
+                                            </label>
                                             <input type="button" class='add-multiple-button' value='Add'>
+                                            </label>
                                             <input type="button" class="add-multiple-button-remove" value='remove'>
                                         </div>
                                         <div class="col-xs-12">
@@ -716,14 +823,23 @@
                                     </div>
                             </section>
                             <section>
+                                </label>
                                 <input type="submit" name="save" value="save">
+                                </label>
                                 <input type="button" name="email-case-worker" value="email case worker">
+                                </label>
                                 <input type="button" class="modal-log-button" data-toggle="modal" data-target="#mymodal" name="clientcontactlog" value="Client contact log">
+                                </label>
                                 <input type="button" class="modal-log-button" data-toggle="modal" data-target="#mymodal" name="organisationcontactlog" value="Organisation contact log">
+                                </label>
                                 <input type="button" class="modal-log-button" data-toggle="modal" data-target="#mymodal" name="cwactions" value="caseworker action log">
+                                </label>
                                 <input type="button" class="modal-log-button" data-toggle="modal" data-target="#mymodal" name="outreachlog" value="outreach log">
+                                </label>
                                 <input type="button" class="modal-log-button" data-toggle="modal" data-target="#mymodal" name="interventionslog" value="interventions log">
+                                </label>
                                 <input type="button" class="modal-log-button" data-toggle="modal" data-target="#mymodal" name="satisfactionsurvey" value="satisfaction survey">
+                                </label>
                                 <input type="button" class="modal-log-button" data-toggle="modal" data-target="#mymodal" name="volunteeractions" value="volunteer action log">
                                 </div>
                                 <section>
@@ -747,11 +863,15 @@
                                                 <div class="panel-collapse collapse in">
                                                     <div class="panel-body add-row-functionality new-entry hidden row">
                                                         <form action="/cases/savecaselogs" method="post">
+                                                            </label>
                                                             <input name="logtable" class="hidden" value="cwactions">
+                                                            </label>
                                                             <input name="cwactionid" class="hidden" value="">
+                                                            </label>
                                                             <input name="caseid" class="hidden" value="">
                                                             <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
                                                                 <label for="actiondate">Date</label>
+                                                                </label>
                                                                 <input type="date" name="actiondate"></input>
                                                             </div>
                                                             <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
@@ -784,6 +904,7 @@
                                                             </div>
                                                             <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
                                                                 <label for="completeddate">Completed date</label>
+                                                                </label>
                                                                 <input type="date" name="completeddate" id="completeddate">
                                                             </div>
                                                             <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
@@ -806,13 +927,17 @@
                                                                 <label for="sixmonths">Review</label>
                                                                 <textarea name="sixmonths" id="sixmonths" cols="30" rows="10"></textarea>
                                                             </div>
+                                                            </label>
                                                             <input type="button" class="edit-row-button" value="edit">
+                                                            </label>
                                                             <input type="button" class="delete-row-button hidden" value="delete">
+                                                            </label>
                                                             <input type="submit" class="save-row-button hidden" value="save">
 
                                                         </form>
                                                     </div>
                                                 </div>
+                                                </label>
                                                 <input type="button" class="add-row-button" value="add row">
 
                                             </section>
@@ -826,11 +951,15 @@
                                                 <div class="panel-collapse collapse in">
                                                     <div class="panel-body add-row-functionality new-entry hidden row">
                                                         <form action="/cases/savecaselogs" method="post">
+                                                            </label>
                                                             <input name="logtable" class="hidden" value="volunteeractions">
+                                                            </label>
                                                             <input name="volactionid" class="hidden" value="">
+                                                            </label>
                                                             <input name="caseid" class="hidden" value="">
                                                             <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
                                                                 <label for="actiondate">Date</label>
+                                                                </label>
                                                                 <input type="date" name="actiondate"></input>
                                                             </div>
                                                             <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
@@ -888,6 +1017,7 @@
                                                         </form>
                                                     </div>
                                                 </div>
+                                                </label>
                                                 <input type="button" class="add-row-button" value="add row">
                                             </section>
                                         </article>
@@ -899,37 +1029,69 @@
                                                     <div class="panel-body add-row-functionality new-entry hidden row">
                                                         <form action="/cases/savecaselogs" method="post">
                                                             <input name="logtable" class="hidden" value="outreachlog">
-                                                            <input name="outreachlogid" class="hidden" value=""> caseid
-                                                            <input type="text" name="caseid"> goal
-                                                            <input type="text" name="goal"> main_contact
-                                                            <input type="text" name="main_contact"> role
-                                                            <input type="text" name="role"> date
-                                                            <input type="text" name="date"> outreachtype
-                                                            <input type="text" name="outreachtype"> group
-                                                            <input type="text" name="group"> numparticipants
-                                                            <input type="text" name="numparticipants"> lengthtime
-                                                            <input type="text" name="lengthtime"> attdocuments
-                                                            <input type="text" name="attdocuments"> followup
-                                                            <input type="text" name="followup"> outcomes
-                                                            <input type="text" name="outcomes"> VV worker 1
+                                                            <input name="outreachlogid" class="hidden" value="">
+                                                            <label> caseid
+                                                            </label>
+                                                            <input type="text" class="hidden" name="caseid">
+                                                            <label> goal
+                                                            </label>
+                                                            <input type="text" name="goal">
+                                                            <label> main_contact
+                                                            </label>
+                                                            <input type="text" name="main_contact">
+                                                            <label>role
+                                                            </label>
+                                                            <input type="text" name="role">
+                                                            <label>date
+                                                            </label>
+                                                            <input type="date" name="date">
+                                                            <label>outreachtype
+                                                            </label>
+                                                            <input type="text" name="outreachtype">
+                                                            <label> group
+                                                            </label>
+                                                            <input type="text" name="group">
+                                                            <label> numparticipants
+                                                            </label>
+                                                            <input type="number" name="numparticipants">
+                                                            <label>lengthtime
+                                                            </label>
+                                                            <input type="text" name="lengthtime">
+                                                            <label>attdocuments
+                                                            </label>
+                                                            <input type="text" name="attdocuments">
+                                                            <label> followup
+                                                            </label>
+                                                            <input type="text" name="followup">
+                                                            <label> outcomes
+                                                            </label>
+                                                            <input type="text" name="outcomes">
+                                                            <label> VV worker 1</label>
                                                             <select type="text" name="vvworker1" data-list='users'> </select>
-                                                            VV worker 2
+
+                                                            <label>VV worker 2</label>
                                                             <select type="text" name="vvworker2" data-list='users'> </select>
-                                                            VV worker 3
+
+                                                            <label>VV worker 3</label>
                                                             <select type="text" name="vvworker3" data-list='users'>
                                                             </select>
-                                                            VV worker 4
+
+                                                            <label>VV worker 4</label>
                                                             <select type="text" name="vvworker4" data-list='users'> </select>
-                                                            VV worker 5
+                                                            <label>VV worker 5</label>
                                                             <select type="text" name="vvworker5" data-list='users'>
                                                             </select>
 
+                                                            </label>
                                                             <input type="button" class="edit-row-button" value="edit">
+                                                            </label>
                                                             <input type="button" class="delete-row-button hidden" value="delete">
+                                                            </label>
                                                             <input type="submit" class="save-row-button hidden" value="save">
                                                         </form>
                                                     </div>
                                                 </div>
+                                                </label>
                                                 <input type="button" class="add-row-button" value="add row">
                                             </section>
                                         </article>
@@ -940,30 +1102,47 @@
                                                 <div class="panel-collapse collapse in">
                                                     <div class="panel-body add-row-functionality new-entry hidden row">
                                                         <form action="/cases/savecaselogs" method="post">
-                                                            <input name="logtable" class="hidden" value="orgcontactlog"> caseid
-                                                            <input type="text" name="caseid"> organisationcontactid
-                                                            <input type="text" name="organisationcontactid"> contactname
-                                                            <input type="text" name="contactname"> organisationname
-                                                            <input type="text" name="organisationname"> area
-                                                            <select type="text" name="area" data-list="towns"></select>
-                                                            role
-                                                            <input type="text" name="role"> contacttype
-                                                            <select type="text" name="contacttype" data-list="contact"></select>
-                                                            contactreason
-                                                            <select type="text" name="contactreason" data-list='reason'></select>
-                                                            attdocuments
-                                                            <input type="text" name="attdocuments"> vvworker
-                                                            <select type="text" name="vvworker" data-list='users'></select>
-                                                            agreedcontacttime
-                                                            <input type="text" name="agreedcontacttime"> contactdetails
-                                                            <input type="text" name="contactdetails">
+                                                            <input name="logtable" class="hidden" value="orgcontactlog">
+                                                            <input type="text" class="hidden" name="caseid">
+                                                            <input type="text" name="organisationcontactid" class="hidden">
+                                                            <label>contactname
+                                                            </label>
+                                                            <input type="text" name="contactname">
+                                                            <label> organisationname
+                                                            </label>
+                                                            <input type="text" name="organisationname">
+                                                            <label> area
+                                                                <select type="text" name="area" data-list="towns"></select>
+                                                                <label>
+                                                                    role
+                                                                </label>
+                                                                <input type="text" name="role">
+                                                                <label>contacttype</label>
+                                                                <select type="text" name="contacttype" data-list="contact"></select>
+                                                                <label>contactreason
+                                                                    <label>
+                                                                        <select type="text" name="contactreason" data-list='reason'></select>
+                                                                        <label>
+                                                                            attdocuments
+                                                                        </label>
+                                                                        <input type="text" name="attdocuments"> vvworker
+                                                                        <select type="text" name="vvworker" data-list='users'></select>
+                                                                        <label>
+                                                                            agreedcontacttime
+                                                                        </label>
+                                                                        <input type="text" name="agreedcontacttime">
+                                                                        <label>
+                                                                            contactdetails
+                                                                        </label>
+                                                                        <input type="text" name="contactdetails">
 
-                                                            <input type="button" class="edit-row-button" value="edit">
-                                                            <input type="button" class="delete-row-button hidden" value="delete">
-                                                            <input type="submit" class="save-row-button hidden" value="save">
+                                                                        <input type="button" class="edit-row-button" value="edit">
+                                                                        <input type="button" class="delete-row-button hidden" value="delete">
+                                                                        <input type="submit" class="save-row-button hidden" value="save">
                                                         </form>
                                                     </div>
                                                 </div>
+                                                </label>
                                                 <input type="button" class="add-row-button" value="add row">
                                         </article>
                                         <article class="panel-group satisfactionsurvey" id="">
@@ -973,12 +1152,16 @@
                                                 <div class="panel-collapse collapse in">
                                                     <div class="panel-body add-row-functionality new-entry hidden row">
                                                         <form action="/cases/savecaselogs" method="post">
+                                                            </label>
                                                             <input type="button" class="edit-row-button" value="edit">
+                                                            </label>
                                                             <input type="button" class="delete-row-button hidden" value="delete">
+                                                            </label>
                                                             <input type="submit" class="save-row-button hidden" value="save">
                                                         </form>
                                                     </div>
                                                 </div>
+                                                </label>
                                                 <input type="button" class="add-row-button" value="add row">
                                             </section>
                                         </article>
@@ -989,12 +1172,16 @@
                                                 <div class="panel-collapse collapse in">
                                                     <div class="panel-body add-row-functionality new-entry hidden row">
                                                         <form action="/cases/savecaselogs" method="post">
+                                                            </label>
                                                             <input type="button" class="edit-row-button" value="edit">
+                                                            </label>
                                                             <input type="button" class="delete-row-button hidden" value="delete">
+                                                            </label>
                                                             <input type="submit" class="save-row-button hidden" value="save">
                                                         </form>
                                                     </div>
                                                 </div>
+                                                </label>
                                                 <input type="button" class="add-row-button" value="add row">
                                             </section>
                                         </article>
@@ -1006,29 +1193,54 @@
                                                     <div class="panel-body add-row-functionality new-entry hidden row">
                                                         <form action="/cases/savecaselogs" method="post">
                                                             <input name="logtable" class="hidden" value="clientcontactlog">
-                                                            <input type="text" name="clientcontactid" class="hidden"> name of victim/ affected person
-                                                            <input type="text" name="nameofvictim" readonly> caseid
-                                                            <input type="text" name="caseid"> date
-                                                            <input type="text" name="date"> time
-                                                            <input type="text" name="time"> contacttype
-                                                            <select type="text" name="contacttype" data-list="contact"></select>
-                                                            numsupported
-                                                            <input type="text" name="numsupported"> othersupport
-                                                            <input type="text" name="othersupport"> name
-                                                            <input type="text" name="name"> attdocuments
-                                                            <input type="text" name="attdocuments"> outcomes
-                                                            <input type="text" name="outcomes"> vvworker
-                                                            <select type="text" name="vvworker" data-list='users'> </select>
-                                                            agreedcontacttime
-                                                            <input type="text" name="agreedcontacttime"> contactdetails
-                                                            <input type="text" name="contactdetails">
+                                                            <input type="text" name="clientcontactid" class="hidden">
+                                                            <label> name of victim/ affected person
+                                                            </label>
+                                                            <input type="text" name="nameofvictim" readonly>
+                                                            <input type="text" class="hidden" name="caseid">
+                                                            <label> date
+                                                            </label>
+                                                            <input type="date" name="date">
+                                                            <label> time
+                                                            </label>
+                                                            <input type="time" name="time">
+                                                            <label> contacttype</label>
+                                                            <select type="text" name="contacttype" data-list="contact"> </select>
+                                                            <label>
+                                                                numsupported
+                                                            </label>
+                                                            <input type="number" name="numsupported">
+                                                            <label> othersupport
+                                                            </label>
+                                                            <input type="text" name="othersupport">
+                                                            <label> name
+                                                            </label>
+                                                            <input type="text" name="name">
+                                                            <label> attdocuments
+                                                            </label>
+                                                            <input type="text" name="attdocuments">
+                                                            <label> outcomes
+                                                            </label>
+                                                            <input type="text" name="outcomes">
+                                                            <label> vvworker
+                                                                <select type="text" name="vvworker" data-list='users'>
+                                                                    <label>
+                                                                </select>
+                                                                <label>
+                                                                    agreedcontacttime
+                                                                </label>
+                                                                <input type="text" name="agreedcontacttime">
+                                                                <label> contactdetails
+                                                                </label>
+                                                                <input type="text" name="contactdetails">
 
-                                                            <input type="button" class="edit-row-button" value="edit">
-                                                            <input type="button" class="delete-row-button hidden" value="delete">
-                                                            <input type="submit" class="save-row-button hidden" value="save">
+                                                                <input type="button" class="edit-row-button" value="edit">
+                                                                <input type="button" class="delete-row-button hidden" value="delete">
+                                                                <input type="submit" class="save-row-button hidden" value="save">
                                                         </form>
                                                     </div>
                                                 </div>
+                                                </label>
                                                 <input type="button" class="add-row-button" value="add row">
                                             </section>
                                         </article>

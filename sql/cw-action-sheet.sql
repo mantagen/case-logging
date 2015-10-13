@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS cwactionsheet (
     cw_action_id serial primary key,
     case_id integer ,
-  action_date date,
+  action_date text,
   caseworker_name text ,
   issue text ,
   risk text ,
@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS cwactionsheet (
   victims_state text ,
   action_type text ,
   action text,
-  completed_date date,
+  completed_date text,
   outcome text ,
   victims_state_vv text ,
   review text ,

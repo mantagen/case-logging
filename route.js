@@ -6,6 +6,18 @@ var bcrypt = require('bcrypt-nodejs');
 // model
 var Model = require('./model');
 
+function filterOutEstring(object) {
+    var result = Object.keys(object).reduce(function(prev, curr) {
+        if (object[curr] === '') {} else {
+            prev[curr] = object[curr];
+        }
+        return prev;
+    }, {});
+    return result;
+}
+
+
+
 // index
 var index = function(req, res, next) {
     if (!req.isAuthenticated()) {
@@ -323,7 +335,8 @@ var newCasePost = function(req, res, next) {
     var thisDate = user.referraldate || today;
     console.log('input date === ', user.referraldate, '\n thisDate ===', thisDate, '\n thisCaseId ===', user.caseid);
 
-    if (user.caseid) {
+    user = filterOutEstring(user);
+    if (user.caseid) { // UPDATE
         thisCase = new Model.Cases({
             case_id: user.caseid,
             log_number: user.lognumber,
@@ -331,7 +344,7 @@ var newCasePost = function(req, res, next) {
             log_type: user.logtype,
             report_taken_by: user.reporttakenby,
             assigned_to: user.assignedto,
-            //assigned_date: user.assigneddate,
+            assigned_date: user.assigneddate,
             referral_type: user.referraltype,
             ref_organisation: user.reforganisation,
             ref_first_name: user.reffirstname,
@@ -751,14 +764,14 @@ var newCasePost = function(req, res, next) {
             general_desired_outcome: user.generaldesiredoutcome,
             general_support_needs: user.generalsupportneeds
         });
-    } else {
+    } else { // INSERT
         thisCase = new Model.Cases({
             log_number: user.lognumber,
             referral_date: thisDate,
             log_type: user.logtype,
             report_taken_by: user.reporttakenby,
             assigned_to: user.assignedto,
-            //assigned_date: user.assigneddate,
+            assigned_date: user.assigneddate,
             referral_type: user.referraltype,
             ref_organisation: user.reforganisation,
             ref_first_name: user.reffirstname,
@@ -1179,6 +1192,7 @@ var newCasePost = function(req, res, next) {
             general_support_needs: user.generalsupportneeds
         });
     }
+
     thisCase.save().then(function(model, err) {
         // then go to casesPage
         if (err) {
@@ -1283,105 +1297,206 @@ var saveCaseLogs = function(req, res, next) {
         var logBody = req.body;
         var saveLog;
         if (logBody.logtable === 'cwactions') {
-            saveLog = new Model.CwActions({
-                //cw_action_id: logBody.cwactionid,
-                case_id: logBody.caseid,
-                //action_date: logBody.actiondate,
-                caseworker_name: logBody.caseworkername,
-                issue: logBody.issue,
-                risk: logBody.risk,
-                goal: logBody.goal,
-                victims_state: logBody.victimsstate,
-                action_type: logBody.actiontype,
-                action: logBody.action,
-                //completed_date: logBody.completeddate,
-                outcome: logBody.outcome,
-                victims_state_vv: logBody.victimsstatevv,
-                review: logBody.review,
-                three_months: logBody.threemonths,
-                six_months: logBody.sixmonths
-            });
+            logBody = filterOutEstring(logBody);
+            if (logBody.cwactionid) {
+                saveLog = new Model.CwActions({
+                    cw_action_id: logBody.cwactionid,
+                    case_id: logBody.caseid,
+                    action_date: logBody.actiondate,
+                    caseworker_name: logBody.caseworkername,
+                    issue: logBody.issue,
+                    risk: logBody.risk,
+                    goal: logBody.goal,
+                    victims_state: logBody.victimsstate,
+                    action_type: logBody.actiontype,
+                    action: logBody.action,
+                    completed_date: logBody.completeddate,
+                    outcome: logBody.outcome,
+                    victims_state_vv: logBody.victimsstatevv,
+                    review: logBody.review,
+                    three_months: logBody.threemonths,
+                    six_months: logBody.sixmonths
+                });
+            } else {
+                saveLog = new Model.CwActions({
+                    case_id: logBody.caseid,
+                    action_date: logBody.actiondate,
+                    caseworker_name: logBody.caseworkername,
+                    issue: logBody.issue,
+                    risk: logBody.risk,
+                    goal: logBody.goal,
+                    victims_state: logBody.victimsstate,
+                    action_type: logBody.actiontype,
+                    action: logBody.action,
+                    completed_date: logBody.completeddate,
+                    outcome: logBody.outcome,
+                    victims_state_vv: logBody.victimsstatevv,
+                    review: logBody.review,
+                    three_months: logBody.threemonths,
+                    six_months: logBody.sixmonths
+                });
+
+            }
         }
         if (logBody.logtable === 'volunteeractions') {
+            logBody = filterOutEstring(logBody);
             console.log('save vol');
-            saveLog = new Model.VolunteerActions({
-                //volunteer_action_id: logBody.volunteeractionid,
-                case_id: logBody.caseid,
-                //action_date: logBody.actiondate,
-                issue: logBody.issue,
-                risk: logBody.risk,
-                goal: logBody.goal,
-                victims_state: logBody.victimsstate,
-                action_type: logBody.actiontype,
-                action: logBody.action,
-                //completed_date: logBody.completeddate,
-                outcome: logBody.outcome,
-                victims_state_vv: logBody.victimsstatevv,
-                review: logBody.review,
-                three_months: logBody.threemonths,
-                six_months: logBody.sixmonths
-            });
+            if (logBody.volunteeractionid) {
+                saveLog = new Model.VolunteerActions({
+                    volunteer_action_id: logBody.volunteeractionid,
+                    case_id: logBody.caseid,
+                    action_date: logBody.actiondate,
+                    issue: logBody.issue,
+                    risk: logBody.risk,
+                    goal: logBody.goal,
+                    victims_state: logBody.victimsstate,
+                    action_type: logBody.actiontype,
+                    action: logBody.action,
+                    completed_date: logBody.completeddate,
+                    outcome: logBody.outcome,
+                    victims_state_vv: logBody.victimsstatevv,
+                    review: logBody.review,
+                    three_months: logBody.threemonths,
+                    six_months: logBody.sixmonths
+                });
+            } else {
+                saveLog = new Model.VolunteerActions({
+                    case_id: logBody.caseid,
+                    action_date: logBody.actiondate,
+                    issue: logBody.issue,
+                    risk: logBody.risk,
+                    goal: logBody.goal,
+                    victims_state: logBody.victimsstate,
+                    action_type: logBody.actiontype,
+                    action: logBody.action,
+                    completed_date: logBody.completeddate,
+                    outcome: logBody.outcome,
+                    victims_state_vv: logBody.victimsstatevv,
+                    review: logBody.review,
+                    three_months: logBody.threemonths,
+                    six_months: logBody.sixmonths
+                });
+            }
         }
         if (logBody.logtable === 'clientcontactlog') {
-            console.log('save cli cont');
-            saveLog = new Model.ClientContactLog({
-                //client_contact_id: logBody.clientcontactid,
-                case_id: logBody.caseid,
-                //date: logBody.date,
-                time: logBody.time,
-                contact_type: logBody.contacttype,
-                num_supported: logBody.numsupported,
-                other_support: logBody.othersupport,
-                name: logBody.name,
-                att_documents: logBody.attdocuments,
-                outcomes: logBody.outcomes,
-                vv_worker: logBody.vvworker,
-                agreed_contact_time: logBody.agreedcontacttime,
-                contact_details: logBody.contactdetails
-            });
+            logBody = filterOutEstring(logBody);
+            console.log(logBody);
+            if (logBody.clientcontactid) {
+                saveLog = new Model.ClientContactLog({
+                    client_contact_id: logBody.clientcontactid,
+                    case_id: logBody.caseid,
+                    date: logBody.date,
+                    time: logBody.time,
+                    contact_type: logBody.contacttype,
+                    num_supported: logBody.numsupported,
+                    other_support: logBody.othersupport,
+                    name: logBody.name,
+                    att_documents: logBody.attdocuments,
+                    outcomes: logBody.outcomes,
+                    vv_worker: logBody.vvworker,
+                    agreed_contact_time: logBody.agreedcontacttime,
+                    contact_details: logBody.contactdetails
+                });
+            } else {
+                saveLog = new Model.ClientContactLog({
+                    case_id: logBody.caseid,
+                    date: logBody.date,
+                    time: logBody.time,
+                    contact_type: logBody.contacttype,
+                    num_supported: logBody.numsupported,
+                    other_support: logBody.othersupport,
+                    name: logBody.name,
+                    att_documents: logBody.attdocuments,
+                    outcomes: logBody.outcomes,
+                    vv_worker: logBody.vvworker,
+                    agreed_contact_time: logBody.agreedcontacttime,
+                    contact_details: logBody.contactdetails
+                });
+            }
         }
         if (logBody.logtable === 'orgcontactlog') {
+            logBody = filterOutEstring(logBody);
             console.log('save org cont');
-            saveLog = new Model.OrganisationContactLog({
-                //organisation_contact_id: logBody.organisationcontactid,
-                case_id: logBody.caseid,
-                contact_name: logBody.contactname,
-                organisation_name: logBody.organisationname,
-                area: logBody.area,
-                role: logBody.role,
-                contact_type: logBody.contacttype,
-                permission: logBody.permission,
-                contact_reason: logBody.contactreason,
-                att_documents: logBody.att_documents,
-                vv_worker: logBody.vvworker,
-                agreed_contact_time: logBody.agreedcontacttime,
-                contact_details: logBody.contactdetails
-            });
+            if (logBody.organisationcontactid) {
+                saveLog = new Model.OrganisationContactLog({
+                    organisation_contact_id: logBody.organisationcontactid,
+                    case_id: logBody.caseid,
+                    contact_name: logBody.contactname,
+                    organisation_name: logBody.organisationname,
+                    area: logBody.area,
+                    role: logBody.role,
+                    contact_type: logBody.contacttype,
+                    permission: logBody.permission,
+                    contact_reason: logBody.contactreason,
+                    att_documents: logBody.att_documents,
+                    vv_worker: logBody.vvworker,
+                    agreed_contact_time: logBody.agreedcontacttime,
+                    contact_details: logBody.contactdetails
+                });
+            } else {
+                saveLog = new Model.OrganisationContactLog({
+                    case_id: logBody.caseid,
+                    contact_name: logBody.contactname,
+                    organisation_name: logBody.organisationname,
+                    area: logBody.area,
+                    role: logBody.role,
+                    contact_type: logBody.contacttype,
+                    permission: logBody.permission,
+                    contact_reason: logBody.contactreason,
+                    att_documents: logBody.att_documents,
+                    vv_worker: logBody.vvworker,
+                    agreed_contact_time: logBody.agreedcontacttime,
+                    contact_details: logBody.contactdetails
+                });
+            }
         }
         //TODO satisfaction survey
         //TODO interventions log
         if (logBody.logtable === 'outreachlog') {
+            logBody = filterOutEstring(logBody);
             console.log('save outreach');
-            saveLog = new Model.OutreachLog({
-                //outreach_log_id: outreachlogid,
-                case_id: caseid,
-                goal: goal,
-                main_contact: maincontact,
-                role: role,
-                //date: date,
-                outreach_type: outreachtype,
-                group: group,
-                num_participants: numparticipants,
-                length_time: lengthtime,
-                att_documents: att_documents,
-                follow_up: followup,
-                outcomes: outcomes,
-                vv_worker_1: vvworker1,
-                vv_worker_2: vvworker2,
-                vv_worker_3: vvworker3,
-                vv_worker_4: vvworker4,
-                vv_worker_5: vvworker5
-            });
+            if (logBody.outreachlogid) {
+                saveLog = new Model.OutreachLog({
+                    outreach_log_id: logBody.outreachlogid,
+                    case_id: logBody.caseid,
+                    goal: logBody.goal,
+                    main_contact: logBody.maincontact,
+                    role: logBody.role,
+                    date: logBody.date,
+                    outreach_type: logBody.outreachtype,
+                    outreach_group: logBody.group,
+                    num_participants: logBody.numparticipants,
+                    length_time: logBody.lengthtime,
+                    att_documents: logBody.att_documents,
+                    follow_up: logBody.followup,
+                    outcomes: logBody.outcomes,
+                    vv_worker_1: logBody.vvworker1,
+                    vv_worker_2: logBody.vvworker2,
+                    vv_worker_3: logBody.vvworker3,
+                    vv_worker_4: logBody.vvworker4,
+                    vv_worker_5: logBody.vvworker5
+                });
+            } else {
+                saveLog = new Model.OutreachLog({
+                    case_id: logBody.caseid,
+                    goal: logBody.goal,
+                    main_contact: logBody.maincontact,
+                    role: logBody.role,
+                    date: logBody.date,
+                    outreach_type: logBody.outreachtype,
+                    outreach_group: logBody.group,
+                    num_participants: logBody.numparticipants,
+                    length_time: logBody.lengthtime,
+                    att_documents: logBody.att_documents,
+                    follow_up: logBody.followup,
+                    outcomes: logBody.outcomes,
+                    vv_worker_1: logBody.vvworker1,
+                    vv_worker_2: logBody.vvworker2,
+                    vv_worker_3: logBody.vvworker3,
+                    vv_worker_4: logBody.vvworker4,
+                    vv_worker_5: logBody.vvworker5
+                });
+            }
         }
 
 

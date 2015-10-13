@@ -2,7 +2,7 @@
 CREATE TABLE IF NOT EXISTS clientContactLog (
 client_contact_id serial primary key,
 case_id integer ,
-  date date ,
+  date text,
   time time ,
   contact_type text ,
   num_supported integer ,

@@ -1,5 +1,3 @@
-
-
 CREATE TABLE IF NOT EXISTS enqiryLog (
 enqiry_log_id serial primary key,
 case_id integer ,
