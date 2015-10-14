@@ -45,9 +45,40 @@ function showSearch(searchIn) {
 }
 
 function populateForm(data) {
+    var prefixNum = 1;
+    var prefix = 'flags';
     $.each(data, function(key, value) {
-        $("input[name='password']").prop('readonly',true).css('text-indent','-999em');
+        $("input[name='password']").prop('readonly', true).css('text-indent', '-999em');
+        var thisInput;
         var keyCss = key.replace(/_/g, '');
+        if (value) {
+            if (parseInt(keyCss[prefix.length]) > prefixNum) {
+                console.log('repeat');
+                $('.add-multiple[data-prefix='+prefix+']').parent().find('.add-multiple-button').trigger('click');
+                console.log(keyCss);
+                prefixNum++;
+                //console.log(thisInput.parents('.add-multiple-parent').children('.add-multiple-button'));
+            }
+            if ($("input[name='" + keyCss + "']").parents('.add-multiple-parent').length ||
+                $("textarea[name='" + keyCss + "']").parents('.add-multiple-parent').length ||
+                $("select[name='" + keyCss + "']").parents('.add-multiple-parent').length
+            ) {
+                if ($("input[name='" + keyCss + "']").length) {
+                    thisInput = $("input[name='" + keyCss + "']");
+                } else if ($("textarea[name='" + keyCss + "']").length) {
+                    thisInput = $("textarea[name='" + keyCss + "']");
+                } else if ($("select[name='" + keyCss + "']").length) {
+                    thisInput = $("select[name='" + keyCss + "']");
+                }
+                if (thisInput.parents('.add-multiple').data('prefix') !== prefix) {
+                    prefix = thisInput.parents('.add-multiple').data('prefix');
+                    prefixNum = 1;
+                }
+
+
+            }
+        }
+
         $("input[name='" + keyCss + "']").val(value);
         $("textarea[name='" + keyCss + "']").val(value);
         $("select[name='" + keyCss + "'] option[value='" + value + "']").prop("selected", true);
